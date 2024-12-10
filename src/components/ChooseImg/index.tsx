@@ -15,7 +15,7 @@ import {colors, commonSty} from '../../../src/theme';
 import {Fonts} from '../../../src/constants';
 import {moderateScale} from 'react-native-size-matters';
 import Icon, {IconType} from '../VectorIcon';
-import ActionSheet, {ActionSheetRef} from 'react-native-actions-sheet';
+// import ActionSheet, {ActionSheetRef} from 'react-native-actions-sheet';
 
 interface chooseImgProps {
   onCameraPress?: (event: GestureResponderEvent) => void;
@@ -26,23 +26,23 @@ interface chooseImgProps {
 interface SheetProps extends chooseImgProps {
   style?: any;
   children?: ReactNode;
-  SheetRef?: ActionSheetRef;
+  // SheetRef?: ActionSheetRef;
 }
 
-const ImagePickerSheet = forwardRef<ActionSheetRef, SheetProps>(
-  ({children, style, onCameraPress, onCanclePress, onGalleryPress}, ref) => {
-    return (
-      <ActionSheet
-        containerStyle={{
-          ...commonSty.pv20,
-          backgroundColor: 'transparent',
-        }}
-        ref={ref}>
-        <ChooseImg onCanclePress={() => ref?.current?.hide()} />
-      </ActionSheet>
-    );
-  },
-);
+// const ImagePickerSheet = forwardRef<ActionSheetRef, SheetProps>(
+//   ({children, style, onCameraPress, onCanclePress, onGalleryPress}, ref) => {
+//     return (
+//       <ActionSheet
+//         containerStyle={{
+//           ...commonSty.pv20,
+//           backgroundColor: 'transparent',
+//         }}
+//         ref={ref}>
+//         <ChooseImg onCanclePress={() => ref?.current?.hide()} />
+//       </ActionSheet>
+//     );
+//   },
+// );
 
 const ChooseImg = (props: chooseImgProps) => {
   const {onCameraPress, onGalleryPress, onCanclePress} = props;
@@ -63,7 +63,7 @@ const ChooseImg = (props: chooseImgProps) => {
   );
 };
 
-export {ChooseImg, ImagePickerSheet};
+export {ChooseImg};
 
 const styles = StyleSheet.create({
   selectBtnContainer: {

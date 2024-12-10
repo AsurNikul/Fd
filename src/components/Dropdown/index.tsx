@@ -8,8 +8,8 @@ import {
   ViewStyle,
 } from 'react-native';
 import React from 'react';
-import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
-import {Dropdown} from 'react-native-element-dropdown';
+// import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
+// import {Dropdown} from 'react-native-element-dropdown';
 
 import styles from './styles';
 import {FormikProps, FormikValues} from 'formik';
@@ -17,7 +17,7 @@ import Typography from '../Typo';
 import {colors, commonSty} from '../../theme';
 import {moderateScale} from 'react-native-size-matters';
 
-interface DropProps<T> extends DropdownProps<T> {
+interface DropProps<T> {
   container?: ViewStyle;
   title?: string;
   leftIcon?: ImageSourcePropType;
@@ -79,7 +79,7 @@ const DropDown = <T extends any>({
             resizeMode="contain"
           />
         )}
-        <Dropdown
+        {/* <Dropdown
           style={[
             styles.subDropdown,
             ,
@@ -105,7 +105,7 @@ const DropDown = <T extends any>({
             setIsFocus(false);
           }}
           {...DropProps}
-        />
+        /> */}
       </View>
       {name
         ? errors[name] &&

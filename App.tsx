@@ -1,31 +1,14 @@
-import React, {createRef, useState} from 'react';
+import React, {useState} from 'react';
 import 'react-native-gesture-handler';
 
 import {Provider} from 'react-redux';
 import store, {pStore} from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import {
-  Button,
-  LogBox,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  View,
-} from 'react-native';
-import Typography from './src/components/Typo';
-import PrimaryBtn from './src/components/button';
-import Check from './src/components/CheckBox';
-import {ChooseImg, Header, ImagePickerSheet} from './src/components/All';
-import {ActionSheetRef} from 'react-native-actions-sheet';
-import DropDown from './src/components/Dropdown';
-import CustomDrop from './src/components/Dropdown/SDropdown';
+import {LogBox} from 'react-native';
+import {Header} from './src/components/All';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Sheet from './src/components/Sheet';
-import TextField from './src/components/TextField';
-import {colors, commonSty} from './src/theme';
-import {PickerData} from './src/constants/data';
-import {moderateScale} from 'react-native-size-matters';
+import {colors} from './src/theme';
 import Picker from './src/components/Picker';
 
 const App = () => {
