@@ -8,8 +8,8 @@ import {
   ViewStyle,
 } from 'react-native';
 import React from 'react';
-// import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
-// import {Dropdown} from 'react-native-element-dropdown';
+import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
+import {Dropdown} from 'react-native-element-dropdown';
 
 import styles from './styles';
 import Typography from '../Typo';
@@ -36,6 +36,29 @@ const CustomDrop = <T extends any>({
 }: DropProps<T>) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
 
+  const renderLabel = () => {
+    if (isFocus) {
+      return (
+        <Text
+          style={[
+            {
+              color: colors.inputText,
+              position: 'absolute',
+              backgroundColor: colors.primary,
+              left: 10,
+              top: -10,
+              zIndex: 999,
+              paddingHorizontal: 8,
+              fontSize: 14,
+            },
+          ]}>
+          Dropdown label
+        </Text>
+      );
+    }
+    return null;
+  };
+
   return (
     <View
       style={[
@@ -44,22 +67,15 @@ const CustomDrop = <T extends any>({
         },
         mainContainerSty,
       ]}>
-      {title && (
-        <View style={{width: '88%', marginLeft: 2, alignSelf: 'center'}}>
-          <Typography
-            title={title}
-            txtStyle={[styles.titleStyle, titleStyle || {}]}
-            size={titleSize ? titleSize : 13}
-          />
-        </View>
-      )}
+      {renderLabel()}
+
       <View
         style={[
           styles.dropdown,
-          {borderColor: isFocus ? colors.silver : 'lightgrey'},
+          {borderColor: colors.inputBorder},
           commonSty.rowCenter2,
         ]}>
-        {/* <Dropdown
+        <Dropdown
           style={[styles.subDropdown]}
           placeholderStyle={styles.placeholderStyle}
           labelField={'label'}
@@ -68,13 +84,15 @@ const CustomDrop = <T extends any>({
           inputSearchStyle={styles.inputSearchStyle}
           itemTextStyle={styles.itemTextStyle}
           itemContainerStyle={styles.itemContainerStyle}
+          activeColor={colors.primary}
           // activeColor={colors.primaryDark}
           onFocus={() => setIsFocus(true)}
+          placeholderStyle={{color: colors.inputBorder}}
           onBlur={() => {
             setIsFocus(false);
           }}
           {...DropProps}
-        /> */}
+        />
       </View>
     </View>
   );

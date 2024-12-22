@@ -3,19 +3,18 @@ import {moderateScale} from 'react-native-size-matters';
 
 import Fonts from '../../constants/fonts';
 import {colors} from '../../theme';
-import {HEIGHT} from '../../theme/commSty';
+import {HEIGHT, WIDTH} from '../../theme/commSty';
 
 const styles = StyleSheet.create({
   inputContainerStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
-    width: '90%',
-    borderColor: colors.black,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.inputBorder,
+    borderWidth: moderateScale(1),
     alignItems: 'center',
     alignSelf: 'center',
-    borderRadius: moderateScale(10),
-    height: moderateScale(45),
+    borderRadius: moderateScale(25),
+    width: WIDTH / 1.2,
   },
   titleStyle: {
     fontSize: moderateScale(18),
@@ -24,11 +23,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   textInputStyle: {
-    paddingLeft: 15,
-    color: colors.black,
+    color: colors.white,
     fontSize: moderateScale(14),
-    flex: 1,
     fontFamily: Fonts.Medium,
+    width: WIDTH / 1.2,
+    height: moderateScale(45),
+    paddingLeft: moderateScale(20),
   },
   iconStyle: {
     height: 25,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   RightIconStyle: {
     height: 22,
     width: 22,
-    marginRight: 10,
+    marginLeft: moderateScale(-40),
   },
 });
 

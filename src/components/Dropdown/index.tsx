@@ -1,15 +1,13 @@
 import {
   Image,
   ImageSourcePropType,
-  StyleSheet,
-  Text,
   TextStyle,
   View,
   ViewStyle,
 } from 'react-native';
-import React from 'react';
-// import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
-// import {Dropdown} from 'react-native-element-dropdown';
+import React, {useState} from 'react';
+import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
+import {Dropdown} from 'react-native-element-dropdown';
 
 import styles from './styles';
 import {FormikProps, FormikValues} from 'formik';
@@ -17,16 +15,21 @@ import Typography from '../Typo';
 import {colors, commonSty} from '../../theme';
 import {moderateScale} from 'react-native-size-matters';
 
-interface DropProps<T> {
+interface DropProps<T> extends DropdownProps<T> {
   container?: ViewStyle;
   title?: string;
   leftIcon?: ImageSourcePropType;
   formik: FormikProps<any>;
-  name: keyof FormikValues;
+  name: string;
   titleStyle?: TextStyle;
   errSty?: any;
   country?: boolean;
   value?: any;
+  labelField?: keyof T;
+  valueField?: keyof T;
+  onChange?: (item: T, index: number) => void;
+  disable?: boolean;
+  loading?: boolean;
 }
 
 const DropDown = <T extends any>({
@@ -39,83 +42,112 @@ const DropDown = <T extends any>({
   errSty,
   country,
   value,
+  labelField = 'label' as keyof T,
+  valueField = 'value' as keyof T,
+  onChange,
+  loading,
+  disable,
   ...DropProps
 }: DropProps<T>) => {
-  const [isFocus, setIsFocus] = React.useState<boolean>(false);
-  const {handleBlur, handleChange, values, errors, touched} = formik;
+  const {handleBlur, handleChange, values, errors, touched, handleSubmit} =
+    formik;
+  const [focus, setFocus] = useState(false);
+  // Ensure labelField and valueField have default values if not provided
+  const resolvedLabelField = labelField || ('label' as keyof T);
+  const resolvedValueField = valueField || ('value' as keyof T);
   interface MainValueTy {
     label: string;
     value: string;
   }
 
   const mainValue: MainValueTy = {
-    label: name ? values[name] : '',
-    value: name ? values[name] : '',
+    label: name ? values[name]?.label : '',
+    value: name ? values[name]?.label : '',
   };
+
+  const error = errors[name];
+  const errorMessage =
+    error && typeof error === 'object' && 'label' in error && error?.label;
+
   return (
-    <View
-      style={{
-        marginTop: moderateScale(13),
-      }}>
-      {title && (
-        <View style={{width: '88%', marginLeft: 2, alignSelf: 'center'}}>
-          <Typography
-            title={title}
-            txtStyle={[styles.titleStyle, titleStyle || {}]}
-            size={13}
-          />
-        </View>
-      )}
+    <View>
       <View
         style={[
-          styles.dropdown,
-          {borderColor: isFocus ? colors.primary : 'lightgrey'},
-          commonSty.rowCenter2,
+          commonSty.mt10,
+          {
+            width: '94%',
+            borderWidth: 1,
+            borderRadius: moderateScale(30),
+            borderColor: colors.inputBorder,
+            height: moderateScale(45),
+          },
+          commonSty.center,
+          commonSty.selfCenter,
+          commonSty.ph10,
         ]}>
-        {leftIcon && (
-          <Image
-            source={leftIcon}
-            style={[styles.iconStyle]}
-            resizeMode="contain"
+        {title && focus && (
+          <Typography
+            title={title}
+            txtStyle={[
+              {
+                color: colors.inputText,
+                position: 'absolute',
+                backgroundColor: colors.primary,
+                left: 25,
+                top: -10,
+                zIndex: 999,
+                paddingHorizontal: 8,
+                fontSize: 14,
+              },
+              titleStyle || {},
+            ]}
+            size={12}
           />
         )}
-        {/* <Dropdown
+        <Dropdown
           style={[
             styles.subDropdown,
-            ,
-            {
-              width: leftIcon ? '93%' : '100%',
-              paddingHorizontal: leftIcon
-                ? moderateScale(11)
-                : moderateScale(3),
-            },
+            // errors[name] && touched[name]
+            //   ? {
+            //       borderColor: colors.lightRed,
+            //       borderWidth: 1,
+            //     }
+            //   : {},
           ]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           inputSearchStyle={styles.inputSearchStyle}
           itemTextStyle={styles.itemTextStyle}
-          itemContainerStyle={styles.itemContainerStyle}
-          // value={value ? value : (mainValue as T)}
+          itemContainerStyle={[styles.itemContainerStyle, {}]}
+          containerStyle={{marginTop: moderateScale(10)}}
+          maxHeight={300}
+          // containerStyle={styles.listItemContainer}
           value={mainValue as T}
-          activeColor={colors.border}
+          // value={values[name]}
+          labelField={resolvedLabelField}
+          valueField={resolvedValueField}
+          activeColor={colors.primary}
+          disable={loading ? loading : disable}
           onChangeText={() => handleChange(name)}
-          onFocus={() => setIsFocus(true)}
+          onChange={item => {
+            formik.setFieldValue(name, item);
+          }}
+          onFocus={() => {
+            setFocus(true);
+          }}
           onBlur={() => {
             handleBlur(name);
-            setIsFocus(false);
+            setFocus(false);
           }}
           {...DropProps}
-        /> */}
+        />
       </View>
-      {name
-        ? errors[name] &&
-          touched[name] && (
-            <Typography
-              title={errors[name] as string}
-              txtStyle={[styles.error, errSty]}
-            />
-          )
-        : null}
+      {name && errorMessage && touched[name] ? (
+        <Typography
+          title={errorMessage as string}
+          txtStyle={[styles.error, errSty]}
+        />
+      ) : null}
     </View>
   );
 };

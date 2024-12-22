@@ -1,43 +1,73 @@
 import Images from './images';
 
-export const bottomData = [
+export const CategoryData = [
   {
     id: 1,
-    title: 'Restaurant',
+    title: 'Sales',
   },
   {
     id: 2,
-    title: 'Hospital',
+    title: 'Marketing',
   },
   {
     id: 3,
-    title: 'Petrol Pump',
-  },
-];
-
-export const FilterData = [
-  {
-    id: 1,
-    title: 'All Launches',
-  },
-  {
-    id: 2,
-    title: 'Past Launches',
-  },
-  {
-    id: 3,
-    title: 'Upcoming Launches',
+    title: 'Admin',
   },
   {
     id: 4,
-    title: 'Latest Launch',
+    title: 'General',
   },
   {
     id: 5,
-    title: 'Next Launch',
+    title: 'Automation',
+  },
+  {
+    id: 6,
+    title: 'UI/UX',
   },
 ];
 
+export const teamData = [
+  {
+    label: '1-10',
+    value: '1-10',
+  },
+  {
+    label: '11-20',
+    value: '11-20',
+  },
+  {
+    label: '21-30',
+    value: '21-30',
+  },
+  {
+    label: '31-50',
+    value: '31-50',
+  },
+  {
+    label: '50+',
+    value: '50+',
+  },
+];
+
+export const businessData = [
+  {
+    label: 'Technology',
+    value: 'Technology',
+  },
+  {
+    label: 'Service-Provider',
+    value: 'Service-Provider',
+  },
+  {
+    label: 'Education',
+    value: 'Education',
+  },
+  {
+    label: 'Other',
+    value: 'Other',
+  },
+];
 export const PickerData = [
   {id: 1, number: 2000},
   {id: 2, number: 2001},

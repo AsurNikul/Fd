@@ -24,9 +24,10 @@ const commonSty = StyleSheet.create({
     width: WIDTH,
   },
   main: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-  mainCenter: {
+  mainContainer: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: colors.primary,
   },
   rowCenter: {
     flexDirection: 'row',
@@ -77,16 +78,16 @@ const commonSty = StyleSheet.create({
   },
   borderBottom: {
     borderBottomWidth: 0.3,
-    borderColor: colors.silver,
+    // borderColor: colors.silver,
     width: WIDTH,
   },
   error: {
     color: colors.red,
     fontSize: moderateScale(11),
     fontFamily: Fonts.Medium,
-    marginTop: 5,
     alignSelf: 'center',
-    width: WIDTH / 1.15,
+    width: WIDTH / 1.4,
+    marginTop: 5,
   },
 });
 
