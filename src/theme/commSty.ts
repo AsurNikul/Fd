@@ -27,7 +27,7 @@ const commonSty = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
   },
   rowCenter: {
     flexDirection: 'row',

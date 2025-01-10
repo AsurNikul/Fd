@@ -1,5 +1,5 @@
 const Images = {
-  // logo: require('../assets/images/logo.png'),
+  car: require('../assets/images/car.jpg'),
   // india: require('../assets/images/india.png'),
 };
 

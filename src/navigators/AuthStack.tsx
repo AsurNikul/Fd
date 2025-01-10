@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/stack';
 import {AuthScr} from './screens';
 import SCREENS from './route';
+import Login from '../screens/Auth/Login';
 
 const AuthStack = () => {
   const Stack = createStackNavigator();
@@ -22,7 +23,7 @@ const AuthStack = () => {
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
-        <Stack.Screen name={SCREENS.LOGIN} component={AuthScr.Login} />
+        <Stack.Screen name={SCREENS.LOGIN} component={Login} />
       </Stack.Navigator>
     </>
   );
