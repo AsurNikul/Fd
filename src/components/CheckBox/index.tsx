@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {commonSty} from '../../theme';
-import Typography from '../Typo';
+import {commonStyles} from '../../theme';
+import Typography from '../Typography';
 import Icon from '../VectorIcon';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 const Check = (props: Props) => {
   const {title, state, setState} = props;
   return (
-    <View style={[commonSty.rowCenter, commonSty.ph20]}>
+    <View style={[commonStyles.rowCenter, commonStyles.ph20]}>
       <Icon
         icon="Fontisto"
         name={state ? 'checkbox-active' : 'checkbox-passive'}

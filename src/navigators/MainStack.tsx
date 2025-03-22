@@ -4,8 +4,7 @@ import {
   CardStyleInterpolators,
   createStackNavigator,
 } from '@react-navigation/stack';
-import {MainScr} from './screens';
-import SCREENS from './route';
+import {Screens, SCREENS} from '../constants';
 
 const MainStack = () => {
   const Stack = createStackNavigator();
@@ -22,8 +21,8 @@ const MainStack = () => {
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
-        <Stack.Screen name={SCREENS.Home} component={MainScr.Home} />
-        <Stack.Screen name={SCREENS.ViewCart} component={MainScr.ViewCart} />
+        <Stack.Screen name={SCREENS.Home} component={Screens.Home} />
+        <Stack.Screen name={SCREENS.ViewCart} component={Screens.ViewCart} />
       </Stack.Navigator>
     </>
   );

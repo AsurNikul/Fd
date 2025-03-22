@@ -1,8 +1,7 @@
-import React from 'react';
 import Home from '../screens/Main/Home';
 import ViewCart from '../screens/Main/ViewCart';
 
-export const MainScr = {
+export const Screens = {
   Home: Home,
   ViewCart: ViewCart,
 };

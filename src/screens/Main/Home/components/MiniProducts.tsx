@@ -1,6 +1,6 @@
 import {Image, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import Typography from '../../../../components/Typo';
+import Typography from '../../../../components/Typography';
 import styles from './styles';
 import {MiniProductsProps} from '../types';
 import {useDispatch, useSelector} from 'react-redux';

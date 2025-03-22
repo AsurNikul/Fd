@@ -1,20 +1,13 @@
-import {
-  ActivityIndicator,
-  ModalProps,
-  StyleSheet,
-  Modal,
-  View,
-} from 'react-native';
-import React from 'react';
-import {colors, commonSty} from '../../theme';
+import {ActivityIndicator, ModalProps, Modal, View} from 'react-native';
+import React, {FC} from 'react';
+import {colors, commonStyles} from '../../theme';
 
-// type Props = {}
 interface loaderPrp extends ModalProps {}
 
-const Loader = (props: loaderPrp) => {
+const Loader: FC<loaderPrp> = props => {
   return (
     <Modal {...props} transparent={true} statusBarTranslucent>
-      <View style={commonSty.modalContainer}>
+      <View style={commonStyles.modalContainer}>
         <ActivityIndicator size="large" color={colors.primary} />
       </View>
     </Modal>
@@ -22,5 +15,3 @@ const Loader = (props: loaderPrp) => {
 };
 
 export default Loader;
-
-const styles = StyleSheet.create({});

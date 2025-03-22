@@ -3,7 +3,7 @@ import {moderateScale} from 'react-native-size-matters';
 
 import Fonts from '../../constants/fonts';
 import {colors} from '../../theme';
-import {HEIGHT, WIDTH} from '../../theme/commSty';
+import {HEIGHT, WIDTH} from '../../theme/commonStyle';
 
 const styles = StyleSheet.create({
   inputContainerStyle: {

@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import {colors, commonSty} from '../../../../theme';
-import {WIDTH} from '../../../../theme/commSty';
+import {colors, commonStyles} from '../../../../theme';
+import {WIDTH} from '../../../../theme/commonStyle';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(10),
     marginRight: moderateScale(10),
     height: moderateScale(310),
-    ...commonSty.mt15,
-    ...commonSty.p10,
+    ...commonStyles.mt15,
+    ...commonStyles.p10,
     backgroundColor: colors.white,
     width: WIDTH / 2.2,
   },
@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
   addToCartContainer: {
     backgroundColor: colors.navyBlue,
     borderRadius: moderateScale(6),
-    ...commonSty.rowCenter,
-    ...commonSty.mb5,
-    ...commonSty.mt10,
-    ...commonSty.ph10,
+    ...commonStyles.rowCenter,
+    ...commonStyles.mb5,
+    ...commonStyles.mt10,
+    ...commonStyles.ph10,
     paddingVertical: moderateScale(8),
   },
   plusStyle: {
-    ...commonSty.size(13),
+    ...commonStyles.size(13),
     tintColor: colors.white,
   },
   addTxtStyle: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   minusStyle: {
-    ...commonSty.size(16),
+    ...commonStyles.size(16),
     tintColor: colors.white,
   },
 });

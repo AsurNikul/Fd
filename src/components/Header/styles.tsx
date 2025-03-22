@@ -1,14 +1,13 @@
 import {StyleSheet} from 'react-native';
-import Fonts from '../../constants/fonts';
 import {moderateScale} from 'react-native-size-matters';
-import {colors, commonSty} from '../../theme';
+import {colors} from '../../theme';
+import {Fonts} from '../../constants';
 
 const styles = StyleSheet.create({
   mainContainer: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     paddingVertical: moderateScale(10),
     paddingBottom: moderateScale(15),
   },
@@ -20,27 +19,32 @@ const styles = StyleSheet.create({
     width: '70%',
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
   },
-  img: {height: moderateScale(25), width: moderateScale(25)},
+  img: {
+    height: moderateScale(18),
+    width: moderateScale(18),
+    marginTop: moderateScale(2),
+    tintColor: colors.primary,
+  },
+  rightImg: {
+    height: moderateScale(25),
+    width: moderateScale(25),
+  },
   txt: {
     fontSize: moderateScale(19),
     color: colors.black,
     fontFamily: Fonts.SemiBold,
   },
-  rightIcon: {
-    height: moderateScale(25),
-    width: moderateScale(25),
-  },
-  countContainer: {
-    position: 'absolute',
-    backgroundColor: colors.navyBlue,
-    height: moderateScale(18),
-    width: moderateScale(18),
-    borderRadius: moderateScale(8),
-    ...commonSty.center,
-    top: moderateScale(10),
-    right: moderateScale(10),
+  headerBorder: {
+    backgroundColor: 'white',
+    elevation: moderateScale(5),
+    shadowOffset: {width: 0, height: moderateScale(3)},
+    shadowOpacity: moderateScale(0.2),
+    shadowRadius: moderateScale(4),
+    shadowColor: 'rgba(0,0,0,0.3)',
+    borderBottomWidth: moderateScale(0.7),
+    borderBottomColor: 'rgba(0,0,0,0.15)',
+    width: '100%',
   },
 });
 

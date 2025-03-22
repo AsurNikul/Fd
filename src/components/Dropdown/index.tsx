@@ -11,8 +11,8 @@ import {Dropdown} from 'react-native-element-dropdown';
 
 import styles from './styles';
 import {FormikProps, FormikValues} from 'formik';
-import Typography from '../Typo';
-import {colors, commonSty} from '../../theme';
+import Typography from '../Typography';
+import {colors, commonStyles} from '../../theme';
 import {moderateScale} from 'react-native-size-matters';
 
 interface DropProps<T> extends DropdownProps<T> {
@@ -73,7 +73,7 @@ const DropDown = <T extends any>({
     <View>
       <View
         style={[
-          commonSty.mt10,
+          commonStyles.mt10,
           {
             width: '94%',
             borderWidth: 1,
@@ -81,9 +81,9 @@ const DropDown = <T extends any>({
             borderColor: colors.inputBorder,
             height: moderateScale(45),
           },
-          commonSty.center,
-          commonSty.selfCenter,
-          commonSty.ph10,
+          commonStyles.center,
+          commonStyles.selfCenter,
+          commonStyles.ph10,
         ]}>
         {title && focus && (
           <Typography

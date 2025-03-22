@@ -1,14 +1,6 @@
-import {
-  BackHandler,
-  Modal,
-  ModalProps,
-  StyleSheet,
-  Text,
-  View,
-  ViewStyle,
-} from 'react-native';
-import React, {ReactNode, SetStateAction, useEffect} from 'react';
-import {commonSty} from '../../theme';
+import {Modal, ModalProps, StyleSheet, View, ViewStyle} from 'react-native';
+import React, {ReactNode, SetStateAction} from 'react';
+import {commonStyles} from '../../theme';
 
 interface ModalPrp extends ModalProps {
   containerSty?: ViewStyle;
@@ -22,7 +14,9 @@ const PopUp = (props: ModalPrp) => {
 
   return (
     <Modal visible={visible} statusBarTranslucent transparent={true}>
-      <View style={[commonSty.modalContainer, containerSty]}>{children}</View>
+      <View style={[commonStyles.modalContainer, containerSty]}>
+        {children}
+      </View>
     </Modal>
   );
 };

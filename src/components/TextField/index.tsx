@@ -23,12 +23,12 @@ import {
   FormikValues,
   useFormikContext,
 } from 'formik';
-import Typography from '../Typo';
+import Typography from '../Typography';
 import styles from './styles';
 import {moderateScale} from 'react-native-size-matters';
-import {colors, commonSty} from '../../theme';
+import {colors, commonStyles} from '../../theme';
 import Icon from '../VectorIcon';
-import {WIDTH} from '../../theme/commSty';
+import {WIDTH} from '../../theme/commonStyle';
 
 interface InputProps extends TextInputProps {
   mainContainer?: ViewStyle;
@@ -155,7 +155,7 @@ const TextField: FunctionComponent<InputProps> = Props => {
             touched[name] && (
               <Typography
                 title={errors[name] as string}
-                txtStyle={[commonSty.error, errSty]}
+                txtStyle={[commonStyles.error, errSty]}
               />
             )
           : null}

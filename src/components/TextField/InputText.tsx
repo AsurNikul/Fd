@@ -12,7 +12,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import Typography from '../Typo';
+import Typography from '../Typography';
 import styles from './styles';
 import {moderateScale} from 'react-native-size-matters';
 import {colors} from '../../theme';

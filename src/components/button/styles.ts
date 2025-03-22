@@ -1,14 +1,13 @@
 import {moderateScale} from 'react-native-size-matters';
 import {StyleSheet} from 'react-native';
-import {Fonts} from '../../../src/constants';
-import {colors} from '../../../src/theme';
+import {Fonts} from '../../constants';
 
 const styles = StyleSheet.create({
-  btnStyle: {
+  buttonContainerStyle: {
     justifyContent: 'center',
     alignSelf: 'center',
   },
-  btnTextStyle: {
+  buttonTextStyle: {
     fontSize: moderateScale(20),
     fontFamily: Fonts.SemiBold,
     textAlign: 'center',

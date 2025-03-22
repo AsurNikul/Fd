@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import {
   ActivityIndicator,
   GestureResponderEvent,
@@ -9,59 +9,46 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import Typography from '../Typo';
+import Typography from '../Typography';
 import {colors} from '../../theme';
-// import Animated, {
-//   useAnimatedStyle,
-//   useSharedValue,
-//   withSequence,
-//   withSpring,
-// } from 'react-native-reanimated';
-import {HEIGHT, WIDTH} from '../../theme/commSty';
+import {HEIGHT, WIDTH} from '../../theme';
 import Animated, {
-  Easing,
-  runOnJS,
   useAnimatedStyle,
   useSharedValue,
-  withClamp,
   withSequence,
-  withSpring,
   withTiming,
 } from 'react-native-reanimated';
 
-interface btnProps extends TouchableOpacityProps {
-  btnStyle?: StyleProp<any>;
+interface ButtonProps extends TouchableOpacityProps {
+  buttonContainerStyle?: StyleProp<any>;
   title?: string;
-  btnTextStyle?: TextStyle;
+  buttonTextStyle?: TextStyle;
   onPress?: (event: GestureResponderEvent) => void;
-  txtSize?: number;
-  txtClr?: string;
+  textSize?: number;
+  textColor?: string;
   backgroundColor?: string;
   loading?: boolean;
-  mr?: number;
+  marginRight?: number;
   height?: number;
   width?: number;
-  PressBounceEffect?: boolean;
+  enablePressBounceEffect?: boolean;
   borderRadius?: number;
 }
 
-const PrimaryBtn: FunctionComponent<btnProps> = (
-  {
-    btnStyle,
+const Button: FC<ButtonProps> = props => {
+  const {
+    buttonContainerStyle,
     title,
-    btnTextStyle,
+    buttonTextStyle,
     onPress,
-    txtClr,
+    textColor,
     backgroundColor,
     loading,
     height,
     width,
-    PressBounceEffect = true,
+    enablePressBounceEffect = true,
     borderRadius,
-  },
-  Props,
-) => {
-  console.log(loading, 'loading');
+  } = props;
 
   const finalHeight = height ? height : Math.floor(HEIGHT / 17);
   const finalWidth = width ? width : Math.floor(WIDTH / 1.15);
@@ -69,9 +56,6 @@ const PrimaryBtn: FunctionComponent<btnProps> = (
     ? borderRadius
     : Math.min(finalHeight, finalWidth) / 5;
   const finalRadius = borderRadius ? borderRadius : finalSize;
-  const animDuration = {
-    duration: 350,
-  };
 
   const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
   const animHeight = useSharedValue(finalHeight);
@@ -90,24 +74,29 @@ const PrimaryBtn: FunctionComponent<btnProps> = (
 
   useEffect(() => {
     if (loading) {
-      animHeight.value = withTiming(finalHeight, animDuration);
-      animWidth.value = withTiming(finalWidth / 6, animDuration);
-      animRadius.value = withTiming(
-        Math.min(finalHeight, finalWidth / 6) / 2,
-        animDuration,
-      );
+      animHeight.value = withTiming(finalHeight);
+      animWidth.value = withTiming(finalWidth / 6);
+      animRadius.value = withTiming(Math.min(finalHeight, finalWidth / 6) / 2);
     } else {
-      animHeight.value = withTiming(finalHeight, animDuration);
-      animWidth.value = withTiming(finalWidth, animDuration);
-      animRadius.value = withTiming(finalRadius, animDuration);
+      animHeight.value = withTiming(finalHeight);
+      animWidth.value = withTiming(finalWidth);
+      animRadius.value = withTiming(finalRadius);
     }
-  }, [loading]);
+  }, [
+    loading,
+    animHeight,
+    animRadius,
+    animWidth,
+    finalHeight,
+    finalRadius,
+    finalWidth,
+  ]);
 
   const handlePress = (e: GestureResponderEvent) => {
-    if (PressBounceEffect) {
+    if (enablePressBounceEffect) {
       animScale.value = withSequence(withTiming(0.97), withTiming(1));
     }
-    if (!!onPress) {
+    if (onPress) {
       onPress(e);
     }
   };
@@ -117,20 +106,20 @@ const PrimaryBtn: FunctionComponent<btnProps> = (
       activeOpacity={0.6}
       style={[
         {
-          backgroundColor: !!backgroundColor ? backgroundColor : colors.primary,
+          backgroundColor: backgroundColor ? backgroundColor : colors.navyBlue,
         },
-        styles.btnStyle,
-        btnStyle,
+        styles.buttonContainerStyle,
+        buttonContainerStyle,
         rStyle,
       ]}
-      {...Props}
+      {...props}
       onPress={handlePress}>
       {loading ? (
         <ActivityIndicator size={'small'} color={colors.white} />
       ) : (
         <Typography
-          color={txtClr ? txtClr : colors.white}
-          style={[styles.btnTextStyle, btnTextStyle]}
+          color={textColor ? textColor : colors.white}
+          style={[styles.buttonTextStyle, buttonTextStyle]}
           title={title}
           size={18}
         />
@@ -139,4 +128,4 @@ const PrimaryBtn: FunctionComponent<btnProps> = (
   );
 };
 
-export default PrimaryBtn;
+export default Button;

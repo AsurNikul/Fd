@@ -1,29 +1,31 @@
-import React, {ReactNode, forwardRef, useState} from 'react';
-import {StyleSheet} from 'react-native';
-import ActionSheet, {ActionSheetRef} from 'react-native-actions-sheet';
-import {commonSty} from '../../theme';
+import React, {ReactNode, forwardRef} from 'react';
+import ActionSheet, {
+  ActionSheetProps,
+  ActionSheetRef,
+} from 'react-native-actions-sheet';
+import styles from './styles';
+import {View} from 'react-native';
 
-interface SheetProps {
-  style?: any;
+interface SheetProps extends ActionSheetProps {
   children?: ReactNode;
-  SheetRef?: ActionSheetRef;
 }
 
 const Sheet = forwardRef<ActionSheetRef, SheetProps>(
-  ({children, style}, ref) => {
+  ({children, ...props}, ref) => {
     return (
       <ActionSheet
-        containerStyle={{
-          ...commonSty.pv20,
-          backgroundColor: 'transparent',
-        }}
-        ref={ref}>
+        containerStyle={styles.mainContainer}
+        ref={ref}
+        {...props}
+        headerAlwaysVisible
+        CustomHeaderComponent={<View style={styles.header} />}
+        gestureEnabled>
         {children}
       </ActionSheet>
     );
   },
 );
 
-const styles = StyleSheet.create({});
+Sheet.displayName = 'Sheet';
 
 export default Sheet;

@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {Fonts} from '../../constants';
 import {colors} from '../../theme';
-import {WIDTH} from '../../theme/commSty';
+import {WIDTH} from '../../theme/commonStyle';
 
 const styles = StyleSheet.create({
   dropdown: {

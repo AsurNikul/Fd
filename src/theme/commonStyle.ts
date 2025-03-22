@@ -14,7 +14,7 @@ const size = (num: number) => ({
   height: moderateScale(num),
 });
 
-const commonSty = StyleSheet.create({
+const commonStyles = StyleSheet.create({
   modalContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -91,4 +91,4 @@ const commonSty = StyleSheet.create({
   },
 });
 
-export default commonSty;
+export default commonStyles;

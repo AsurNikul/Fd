@@ -12,9 +12,9 @@ import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/compon
 import {Dropdown} from 'react-native-element-dropdown';
 
 import styles from './styles';
-import Typography from '../Typo';
+import Typography from '../Typography';
 import {moderateScale} from 'react-native-size-matters';
-import {colors, commonSty} from '../../theme';
+import {colors, commonStyles} from '../../theme';
 
 interface DropProps<T> {
   container?: ViewStyle;
@@ -73,7 +73,7 @@ const CustomDrop = <T extends any>({
         style={[
           styles.dropdown,
           {borderColor: colors.inputBorder},
-          commonSty.rowCenter2,
+          commonStyles.rowCenter2,
         ]}>
         <Dropdown
           style={[styles.subDropdown]}

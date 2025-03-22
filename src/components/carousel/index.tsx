@@ -1,6 +1,6 @@
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-import {HEIGHT, WIDTH} from '../../theme/commSty';
+import {HEIGHT, WIDTH} from '../../theme/commonStyle';
 import {Images} from '../../constants';
 
 type Props = {};
