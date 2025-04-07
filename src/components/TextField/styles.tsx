@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: moderateScale(18),
-    width: '89%',
+    width: '95%',
     marginBottom: HEIGHT * 0.009,
     alignSelf: 'center',
   },

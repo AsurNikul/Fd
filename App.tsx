@@ -9,6 +9,7 @@ import {LogBox} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import MainStack from './src/navigators/MainStack';
 import {navigationRef} from './src/utils/navigationServices';
+import {ConfirmModalProvider} from './src/components/All';
 
 const App = () => {
   LogBox.ignoreAllLogs();
@@ -17,7 +18,9 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={pStore}>
         <NavigationContainer ref={navigationRef}>
-          <MainStack />
+          <ConfirmModalProvider>
+            <MainStack />
+          </ConfirmModalProvider>
         </NavigationContainer>
       </PersistGate>
     </Provider>

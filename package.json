@@ -21,7 +21,7 @@
     "remove_all": "npm run remove_node && npm run remove_pod",
     "xc": "xed -b ios",
     "remove_duplicate": "rm -rf ./android/app/src/main/res/drawable-* && rm -rf ./android/app/src/main/res/raw",
-    "open_as": "open /path/to/AndroidStudio.app",
+    "open:android": "open -a Android ./android",
     "build_ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
     "remove_git": "rm -rf .git",
     "side-effects": "yarn run pod;",
