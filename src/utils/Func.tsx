@@ -1,18 +1,52 @@
 import {Alert, Platform} from 'react-native';
 import axios from 'axios';
+import {showGlobalModal} from '../components/ConfirmModalProvider/CustomModal';
 
 // Check App Platform
 const isIOS: boolean = Platform.OS === 'ios';
 
 // Show Popup Alert
-const showPopupWithOk = (
-  title: string | undefined,
-  message: string | undefined,
+//Show Popup Alert
+export const showPopupWithOk = (
+  title: string,
+  message?: string,
   okClicked?: () => void,
-): void => {
-  Alert.alert(!!title ? title : 'health_e', !!message ? message : '', [
-    {text: 'OK', onPress: () => okClicked && okClicked()},
-  ]);
+) => {
+  // Alert.alert(!!title ? title : strings.health_e, !!message ? message : "", [
+  //   { text: strings.ok.toUpperCase(), onPress: () => okClicked && okClicked() },
+  // ]);
+  showGlobalModal({
+    title: !!title ? title : 'test',
+    message: !!message ? message : '',
+    onOkayClicked: () => okClicked && okClicked(),
+  });
+};
+
+//Show Popup with ok and cancel
+export const showPopupWithOkAndCancel = (
+  title?: string,
+  message?: string,
+  okClicked?: () => void,
+  cancelClicked?: () => void,
+) => {
+  // Alert.alert(!!title ? title : strings.health_e, !!message ? message : "", [
+  //   {
+  //     text: strings.cancel,
+  //     onPress: () => cancelClicked && cancelClicked(),
+  //     style: "cancel",
+  //   },
+  //   {
+  //     text: strings.ok,
+  //     onPress: () => okClicked && okClicked(),
+  //   },
+  // ]);
+  showGlobalModal({
+    title: !!title ? title : 'test',
+    message: !!message ? message : '',
+    onOkayClicked: () => okClicked && okClicked(),
+    onCancelClicked: () => cancelClicked && cancelClicked(),
+    showCancel: true,
+  });
 };
 
 export const callAPI = async (url?: string, method?: string) => {

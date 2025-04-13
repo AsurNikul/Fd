@@ -1119,7 +1119,7 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - RNGestureHandler (2.24.0):
+  - RNGestureHandler (2.25.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1433,7 +1433,7 @@ SPEC CHECKSUMS:
   ReactCommon: 2e5492a3e3a8e72d635c266405e49d12627e5bf0
   RNCAsyncStorage: b6410dead2732b5c72a7fdb1ecb5651bbcf4674b
   RNCMaskedView: 3f3c27b339db863b1fd5f39cc9660484ecfd46ee
-  RNGestureHandler: d52b1d44a5d3a7e2d74909e1e934f79a30e8c41f
+  RNGestureHandler: c50114bf77ef1b1f44717cd593c9b1206dc97149
   RNImageCropPicker: b0afedeefd8655254a15c34103718455fde6ce59
   RNReactNativeHapticFeedback: 9d07fb28f9ef1e81440181602954cb3c78d30184
   RNReanimated: 1ef68beaad1a8f4cb2a9098d0d3c374a2e3fd51a

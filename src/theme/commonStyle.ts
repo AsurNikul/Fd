@@ -1,10 +1,10 @@
 import {Dimensions} from 'react-native';
 
-export const HEIGHT = Dimensions.get('window').height;
-export const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
+const WIDTH = Dimensions.get('window').width;
 
 import {StyleSheet} from 'react-native';
-import {moderateScale, verticalScale} from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 
 import Fonts from '../constants/fonts';
 import colors from './colors';
@@ -14,7 +14,7 @@ const size = (num: number) => ({
   height: moderateScale(num),
 });
 
-const commonStyles = StyleSheet.create({
+const commonStyle = StyleSheet.create({
   modalContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -23,11 +23,17 @@ const commonStyles = StyleSheet.create({
     alignSelf: 'center',
     width: WIDTH,
   },
-  main: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  main: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   mainContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: colors.lightWhite,
+  },
+  subContainer: {
+    flex: 0.95,
   },
   rowCenter: {
     flexDirection: 'row',
@@ -70,25 +76,27 @@ const commonStyles = StyleSheet.create({
   },
   lightShadow: {
     elevation: 2,
-    shadowColor: colors.black,
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.5,
     shadowRadius: 1,
-    backgroundColor: colors.white,
+    shadowColor: colors.white,
   },
   borderBottom: {
-    borderBottomWidth: 0.3,
-    // borderColor: colors.silver,
+    borderBottomWidth: moderateScale(0.3),
     width: WIDTH,
   },
   error: {
-    color: colors.red,
-    fontSize: moderateScale(11),
+    fontSize: moderateScale(12),
     fontFamily: Fonts.Medium,
     alignSelf: 'center',
-    width: WIDTH / 1.4,
-    marginTop: 5,
+    width: WIDTH / 1.2,
+    marginTop: moderateScale(5),
+    color: colors.red,
+  },
+  loaderContainer: {
+    flex: 1,
+    width: WIDTH,
   },
 });
 
-export default commonStyles;
+export {commonStyle, HEIGHT, WIDTH};

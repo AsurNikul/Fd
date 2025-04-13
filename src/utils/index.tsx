@@ -10,3 +10,4 @@ export const hapticOptions = {
 export {navigate, push, replace, goBack, reset} from './navigationServices';
 
 export type {CustomSvgProps, ImagePickerResponse} from './types';
+export {showPopupWithOk, showPopupWithOkAndCancel} from './Func';

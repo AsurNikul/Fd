@@ -12,5 +12,5 @@ export {default as InputText} from '../TextField/InputText';
 export {default as Button} from '../Button';
 export {default as PickerSheet} from '../PickerSheet';
 export {default as VectorIcon} from '../VectorIcon';
-export {ConfirmModalProvider} from '../ConfirmModalProvider';
-export {default as CustomConfirmModal} from '../ConfirmModalProvider/CustomConfirmModal';
+export {default as CustomModal} from '../ConfirmModalProvider/CustomModal';
+export {ConfirmModalProvider} from '../ConfirmModalProvider/index';
