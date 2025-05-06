@@ -1,13 +1,16 @@
+
+
 import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
-import React, {FC} from 'react';
-import {isIOS} from '../../utils';
-import styles from './styles';
-import {commonStyles} from '../../theme';
+import React, {FC, memo} from 'react';
 import {verticalScale} from 'react-native-size-matters';
 
 import {ReactNode} from 'react';
 import {ScrollViewProps, StyleProp, ViewProps, ViewStyle} from 'react-native';
 import Header, {HeaderProps} from '../Header';
+import styles from './styles';
+import {commonStyles} from '../../theme';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {isIOS} from '../../utils';
 
 export interface ContainerProps
   extends ViewProps,
@@ -18,6 +21,7 @@ export interface ContainerProps
   isAvoidKeyboard?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
   center?: boolean;
+  showHeader?: boolean;
 }
 
 export interface areaProps {
@@ -34,15 +38,20 @@ const Container: FC<ContainerProps> = props => {
     isScroll,
     isAvoidKeyboard,
     center,
+    showHeader = true,
     ...restProps
   } = props;
+  const topInset = useSafeAreaInsets().top;
+
   if (isScroll) {
     return (
       <>
-        <Header {...restProps} />
+        {showHeader && <Header {...restProps} />}
         <ScrollView
           contentContainerStyle={[styles.main, containerStyle]}
           showsVerticalScrollIndicator={false}
+          bounces={false}
+          nestedScrollEnabled
           {...restProps}>
           {children}
         </ScrollView>
@@ -51,29 +60,44 @@ const Container: FC<ContainerProps> = props => {
   }
 
   if (isAvoidKeyboard) {
-    <KeyboardAvoidingView
-      style={styles.keyboardView}
-      behavior={isIOS ? 'padding' : 'height'}
-      keyboardVerticalOffset={isIOS ? 0 : verticalScale(-30)}>
-      <Header {...restProps} />
-      <ScrollView
-        bounces={false}
-        showsVerticalScrollIndicator={false}
-        nestedScrollEnabled
-        contentContainerStyle={containerStyle}>
-        {children}
-      </ScrollView>
-    </KeyboardAvoidingView>;
+    return (
+      <KeyboardAvoidingView
+        style={styles.keyboardView}
+        behavior={isIOS ? 'padding' : 'height'}
+        keyboardVerticalOffset={isIOS ? 0 : verticalScale(-30)}>
+        {showHeader && <Header {...restProps} />}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          bounces={false}
+          nestedScrollEnabled
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={[
+            containerStyle,
+            !showHeader && commonStyles.containerInset(topInset),
+          ]}>
+          {children}
+        </ScrollView>
+      </KeyboardAvoidingView>
+    );
   }
 
   return (
     <View
-      style={[containerStyle, styles.main, center && commonStyles.center]}
+      style={[
+        !containerStyle && showHeader && styles.main,
+        center && commonStyles.center,
+        !showHeader && commonStyles.containerInset(topInset),
+        containerStyle,
+      ]}
       {...restProps}>
-      <Header {...restProps} />
+      {showHeader && <Header {...restProps} />}
       {children}
     </View>
   );
 };
 
-export default Container;
+export default memo(Container);
+
+
+
+

@@ -4,7 +4,7 @@ const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
 
 import {StyleSheet} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import {moderateScale , verticalScale} from 'react-native-size-matters';
 
 import Fonts from '../constants/fonts';
 import colors from './colors';
@@ -13,6 +13,13 @@ const size = (num: number) => ({
   width: moderateScale(num),
   height: moderateScale(num),
 });
+
+const containerInset = (num: number) => ({
+  flex: 1,
+  backgroundColor: colors.white,
+  paddingTop: verticalScale(num),
+  width: WIDTH,
+}); 
 
 const commonStyle = StyleSheet.create({
   modalContainer: {
@@ -97,6 +104,8 @@ const commonStyle = StyleSheet.create({
     flex: 1,
     width: WIDTH,
   },
+  containerInset: containerInset as any,
+
 });
 
 export {commonStyle, HEIGHT, WIDTH};
