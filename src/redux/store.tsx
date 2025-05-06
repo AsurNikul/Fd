@@ -1,5 +1,4 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistStore, persistReducer} from 'redux-persist';
 import MainSlice, {mainSliceInitialValue} from './MainSlice';
@@ -21,7 +20,8 @@ const persistedReducer = persistReducer(persistConfig, RootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: [thunk],
+  middleware: getDefaultMiddleware =>
+  getDefaultMiddleware({serializableCheck: false}),
 });
 
 export default store;
