@@ -106,7 +106,7 @@ const Button: FC<ButtonProps> = props => {
       activeOpacity={0.6}
       style={[
         {
-          backgroundColor: backgroundColor ? backgroundColor : colors.black,
+          backgroundColor: backgroundColor ? backgroundColor : colors.primary,
         },
         styles.buttonContainerStyle,
         buttonContainerStyle,

@@ -7,9 +7,10 @@ import {PersistGate} from 'redux-persist/integration/react';
 
 import {LogBox} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import MainStack from './src/navigators/MainStack';
 import {navigationRef} from './src/utils/NavigationServices';
 import {ConfirmModalProvider} from './src/components/ConfirmModalProvider';
+import RootStack from './src/navigators/RootStack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
   LogBox.ignoreAllLogs();
@@ -18,9 +19,11 @@ const App = () => {
     <Provider store={store}>
       <PersistGate persistor={pStore}>
         <NavigationContainer ref={navigationRef}>
-          <ConfirmModalProvider>
-            <MainStack />
-          </ConfirmModalProvider>
+          <SafeAreaProvider>
+            <ConfirmModalProvider>
+              <RootStack />
+            </ConfirmModalProvider>
+          </SafeAreaProvider>
         </NavigationContainer>
       </PersistGate>
     </Provider>

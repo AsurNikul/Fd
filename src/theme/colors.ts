@@ -14,5 +14,7 @@ const colors = {
   smokyGrey: '#757575',
   inputBorder: '#DCDCDC',
   quillGrey: '#D3D3D3',
+  oil: '#2D201C',
+  midWhite: '#F9FAFB',
 };
 export default colors;

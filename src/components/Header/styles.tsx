@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
     tintColor: colors.primary,
   },
   rightImg: {
-    height: moderateScale(25),
-    width: moderateScale(25),
+    height: moderateScale(18),
+    width: moderateScale(18),
+    tintColor: colors.white,
   },
   txt: {
     fontSize: moderateScale(19),
-    color: colors.black,
     fontFamily: Fonts.SemiBold,
   },
   headerBorder: {

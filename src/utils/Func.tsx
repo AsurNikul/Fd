@@ -234,7 +234,10 @@ const responseCodes = {
   REDIRECT: 302,
   TOKEN_EXPIRED: 411,
 };
-
+export const isError = (name?: string, errors?: any, touched?: any) => {
+  const isError = name && errors[name] && touched[name];
+  return isError;
+};
 // export const apiCall = async (
 //   url: string,
 //   method: string,

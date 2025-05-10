@@ -89,19 +89,12 @@ const TextField: FunctionComponent<InputProps> = props => {
           styles.inputContainerStyle,
           inputContainerStyle,
           {
-            borderColor: focus ? colors.silver : 'lightgrey',
+            borderColor: focus ? colors.quillGrey : 'lightgrey',
           },
         ]}>
-        {leftIcon && (
-          <Image
-            source={leftIcon}
-            style={[styles.iconStyle, iconStyle]}
-            resizeMode="contain"
-          />
-        )}
         <TextInput
           style={[styles.textInputStyle, textInputStyle]}
-          placeholderTextColor={colors.silver}
+          placeholderTextColor={colors.quillGrey}
           {...props}
         />
         {isHide && (

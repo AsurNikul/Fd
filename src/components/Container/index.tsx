@@ -1,5 +1,3 @@
-
-
 import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import React, {FC, memo} from 'react';
 import {verticalScale} from 'react-native-size-matters';
@@ -21,7 +19,7 @@ export interface ContainerProps
   isAvoidKeyboard?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
   center?: boolean;
-  showHeader?: boolean;
+  title?: string;
 }
 
 export interface areaProps {
@@ -38,7 +36,7 @@ const Container: FC<ContainerProps> = props => {
     isScroll,
     isAvoidKeyboard,
     center,
-    showHeader = true,
+    title,
     ...restProps
   } = props;
   const topInset = useSafeAreaInsets().top;
@@ -46,7 +44,7 @@ const Container: FC<ContainerProps> = props => {
   if (isScroll) {
     return (
       <>
-        {showHeader && <Header {...restProps} />}
+        {title && <Header title={title} {...restProps} />}
         <ScrollView
           contentContainerStyle={[styles.main, containerStyle]}
           showsVerticalScrollIndicator={false}
@@ -62,18 +60,18 @@ const Container: FC<ContainerProps> = props => {
   if (isAvoidKeyboard) {
     return (
       <KeyboardAvoidingView
-        style={styles.keyboardView}
+        style={commonStyles.flex}
         behavior={isIOS ? 'padding' : 'height'}
-        keyboardVerticalOffset={isIOS ? 0 : verticalScale(-30)}>
-        {showHeader && <Header {...restProps} />}
+        keyboardVerticalOffset={isIOS ? 0 : verticalScale(30)}>
+        {title && <Header title={title} {...restProps} />}
         <ScrollView
           showsVerticalScrollIndicator={false}
           bounces={false}
-          nestedScrollEnabled
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={[
+            !title && styles.keyboardView,
             containerStyle,
-            !showHeader && commonStyles.containerInset(topInset),
+            !title && commonStyles.containerInset(topInset),
           ]}>
           {children}
         </ScrollView>
@@ -84,20 +82,16 @@ const Container: FC<ContainerProps> = props => {
   return (
     <View
       style={[
-        !containerStyle && showHeader && styles.main,
+        !containerStyle && title && styles.main,
         center && commonStyles.center,
-        !showHeader && commonStyles.containerInset(topInset),
+        !title && commonStyles.containerInset(topInset),
         containerStyle,
       ]}
       {...restProps}>
-      {showHeader && <Header {...restProps} />}
+      {title && <Header title={title} {...restProps} />}
       {children}
     </View>
   );
 };
 
 export default memo(Container);
-
-
-
-

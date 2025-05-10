@@ -38,10 +38,18 @@ export const addBatchSchema = Yup.object().shape({
     .typeError('RM (KG) must be a number')
     .positive('Must be greater than 0')
     .required('RM (KG) is required'),
-  inTime: Yup.date()
-  .required('In Time is required'),
+  inTime: Yup.date().required('In Time is required'),
   outTime: Yup.date()
-  .required('Out Time is required'),
+    .required('Out Time is required')
+    .test(
+      'is-after-inTime',
+      'Out Time must be later than In Time',
+      function (value) {
+        const {inTime} = this.parent;
+        if (!inTime || !value) return true; // Skip validation if either is missing
+        return new Date(value) > new Date(inTime);
+      },
+    ),
   sale: Yup.number()
     .typeError('Sale must be a number')
     .min(0, 'Sale cannot be negative')

@@ -30,8 +30,8 @@ export interface HeaderProps {
   leftIcon?: ImageSourcePropType;
   customLeftComponent?: ReactNode;
   backgroundColor?: string;
-  showBottomBorder?: boolean;
   showLeftIcon?: boolean;
+  renderLeftIcon?: () => ReactNode;
 }
 
 const Header: FC<HeaderProps> = props => {
@@ -45,8 +45,8 @@ const Header: FC<HeaderProps> = props => {
     rightIcon,
     backgroundColor,
     onRightPress,
-    showBottomBorder,
     showLeftIcon,
+    renderLeftIcon,
   } = props;
   const handleLeftPress = () => goBack();
   const insets = useSafeAreaInsets();
@@ -59,21 +59,30 @@ const Header: FC<HeaderProps> = props => {
           containerStyle,
           {
             paddingTop: insets.top + moderateScale(10),
-            backgroundColor: backgroundColor || colors.white,
+            backgroundColor: backgroundColor || colors.primary,
           },
         ]}>
-        {showLeftIcon ? (
-          <TouchableOpacity
-            style={[styles.smallContainer, leftContainerStyle]}
-            onPress={onLeftPress || handleLeftPress}
-            hitSlop={20}>
-            <BackSVG />
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.smallContainer} />
+        {!renderLeftIcon && (
+          <>
+            {showLeftIcon ? (
+              <TouchableOpacity
+                style={[styles.smallContainer, leftContainerStyle]}
+                onPress={onLeftPress || handleLeftPress}
+                hitSlop={20}>
+                <BackSVG color={colors.white} />
+              </TouchableOpacity>
+            ) : (
+              <View style={styles.smallContainer} />
+            )}
+          </>
         )}
+        {renderLeftIcon && renderLeftIcon()}
         <View style={styles.bigContainer}>
-          <Typography title={title} txtStyle={[styles.txt, titleStyle || {}]} />
+          <Typography
+            title={title}
+            color={colors.white}
+            txtStyle={[styles.txt, titleStyle || {}]}
+          />
         </View>
         {rightIcon ? (
           <TouchableOpacity
@@ -90,7 +99,7 @@ const Header: FC<HeaderProps> = props => {
           <View style={styles.smallContainer} />
         )}
       </View>
-      {showBottomBorder && <View style={styles.headerBorder} />}
+      <View style={styles.headerBorder} />
     </>
   );
 };

@@ -1,12 +1,9 @@
-import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
+import React, {FunctionComponent, memo, useState} from 'react';
 import {
-  Animated,
   GestureResponderEvent,
   Image,
-  ImageProps,
   ImageSourcePropType,
   ImageStyle,
-  Pressable,
   StyleProp,
   TextInput,
   TextInputProps,
@@ -15,20 +12,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {
-  FormikFormProps,
-  FormikHandlers,
-  FormikHelpers,
-  FormikProps,
-  FormikValues,
-  useFormikContext,
-} from 'formik';
+import {FormikProps, FormikValues} from 'formik';
 import Typography from '../Typography';
 import styles from './styles';
 import {moderateScale} from 'react-native-size-matters';
-import {colors, commonStyles} from '../../theme';
-import Icon from '../VectorIcon';
-import {WIDTH} from '../../theme/commonStyle';
+import {colors, commonStyles, WIDTH} from '../../theme';
+import Icon, {IconType} from '../VectorIcon';
 
 interface InputProps extends TextInputProps {
   mainContainer?: ViewStyle;
@@ -52,9 +41,12 @@ interface InputProps extends TextInputProps {
   mt?: number;
   errSty?: any;
   titleContainer?: ViewStyle;
+  isPassword?: boolean;
+  iconName?: string;
+  iconType?: IconType;
 }
 
-const TextField: FunctionComponent<InputProps> = Props => {
+const TextField: FunctionComponent<InputProps> = props => {
   const {
     mainContainer,
     leftIcon,
@@ -62,26 +54,41 @@ const TextField: FunctionComponent<InputProps> = Props => {
     inputContainerStyle,
     title,
     titleStyle,
-    RightIconStyle,
     textInputStyle,
-    isHide,
     name,
     formik,
     mt,
     errSty,
-    RightIcon,
-    rightIconPress,
-    titleContainer,
-  } = Props;
+    isPassword,
+    iconName,
+    iconType,
+  } = props;
 
-  const [pass, setPass] = useState(false);
   const [focus, setFocus] = useState<boolean>(false);
-
+  const [showPassword, setShowPassword] = useState(true);
   const {handleBlur, handleChange, values, errors, touched} = formik;
-  console.log('🚀 ~ values:', values);
 
-  const handlePass = () => {
-    setPass(!pass);
+  const isError = name && errors[name] && touched[name];
+
+  const dynamicBorder = {
+    borderBottomColor: focus
+      ? colors.primary
+      : isError
+      ? colors.red
+      : colors.primary,
+  };
+  const dynamicInputContainerStyle = {
+    width:
+      iconType && isPassword
+        ? WIDTH / 1.4
+        : iconType
+        ? WIDTH / 1.3
+        : isPassword
+        ? WIDTH / 1.2
+        : WIDTH / 1.15,
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -90,78 +97,69 @@ const TextField: FunctionComponent<InputProps> = Props => {
         {marginTop: mt ? moderateScale(mt) : moderateScale(20)},
         mainContainer,
       ]}>
-      {title && focus && (
+      {title && (
         <Typography
           title={title}
-          txtStyle={[
-            {
-              color: colors.inputText,
-              position: 'absolute',
-              backgroundColor: colors.primary,
-              left: 25,
-              top: -10,
-              zIndex: 999,
-              paddingHorizontal: 8,
-              fontSize: 14,
-            },
-            titleStyle || {},
-          ]}
-          size={12}
+          txtStyle={[titleStyle || {}]}
+          size={15}
+          mb={10}
+          ml={2}
         />
       )}
       <View
         style={[
           styles.inputContainerStyle,
           inputContainerStyle,
-          {
-            borderColor: colors.inputBorder,
-          },
+          dynamicBorder,
         ]}>
-        {leftIcon && (
-          <Image
-            source={leftIcon}
-            style={[styles.iconStyle, iconStyle]}
-            resizeMode="contain"
+        {iconType && (
+          <Icon
+            name={iconName}
+            icon={iconType}
+            color={colors.primary}
+            size={20}
           />
         )}
         <TextInput
-          style={[styles.textInputStyle, textInputStyle]}
-          secureTextEntry={pass}
+          style={[
+            styles.textInputStyle,
+            textInputStyle,
+            dynamicInputContainerStyle,
+          ]}
           onChangeText={handleChange(name)}
           onBlur={() => {
             handleBlur(name);
             setFocus(false);
           }}
           onFocus={() => setFocus(true)}
-          // onBlur={() => setFocus(false)}
           placeholder={title}
-          placeholderTextColor={colors.inputText}
+          secureTextEntry={isPassword && showPassword}
+          placeholderTextColor={colors.black}
           value={name ? values[name] : ''}
-          {...Props}
+          {...props}
         />
-        {isHide && (
-          <Icon
-            name={pass ? 'eye' : 'eye-off'}
-            icon="Ionicons"
-            color={colors.white}
-            style={[styles.RightIconStyle, RightIconStyle]}
-            onPress={handlePass}
-          />
+        {isPassword && (
+          <TouchableOpacity onPress={togglePasswordVisibility}>
+            <Icon
+              name={showPassword ? 'eye-outline' : 'eye-off-outline'}
+              icon="Ionicons"
+              size={22}
+              onPress={togglePasswordVisibility}
+              color={colors.primary}
+            />
+          </TouchableOpacity>
         )}
       </View>
       <View>
-        {name
-          ? errors[name] &&
-            touched[name] && (
-              <Typography
-                title={errors[name] as string}
-                txtStyle={[commonStyles.error, errSty]}
-              />
-            )
-          : null}
+        {isError && (
+          <Typography
+            title={errors[name] as string}
+            txtStyle={[commonStyles.error, errSty]}
+          />
+        )}
       </View>
     </View>
   );
 };
 
-export default TextField;
+export default memo(TextField);

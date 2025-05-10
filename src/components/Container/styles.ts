@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {verticalScale} from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   main: {
@@ -7,7 +8,8 @@ const styles = StyleSheet.create({
   },
   keyboardView: {
     flexGrow: 1,
-    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: verticalScale(20),
   },
 });
 

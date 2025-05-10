@@ -28,3 +28,25 @@ export interface CustomSvgProps extends SvgProps {
   width?: number;
   color?: string;
 }
+
+export interface loginDetailProps {
+  username: string;
+  password: string;
+}
+
+export interface registerProps {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  mobileNumber: string;
+}
+
+export interface addBatchProps {
+  date: any;
+  batchNo: string;
+  rmKg: string;
+  inTime: any;
+  outTime: any;
+  sale: string;
+}

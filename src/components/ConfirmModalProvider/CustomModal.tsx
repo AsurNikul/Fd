@@ -10,7 +10,7 @@ import {
 import {Images} from '../../constants';
 import {colors, commonStyles} from '../../theme';
 import Typography from '../Typography';
-import {moderateScale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
 const SHOW_GLOBAL_MODAL = 'show_global_modal';
 const HIDE_GLOBAL_MODAL = 'hide_global_modal';
@@ -89,8 +89,14 @@ const CustomModal = props => {
       <View style={localStyles.container}>
         <View style={localStyles.modal}>
           <View style={[commonStyles.rowStart]}>
-            <Image source={Images.search} style={commonStyles.size(24)} />
-            <Typography color={colors.primary}>{title}</Typography>
+            <Image
+              source={Images.logo}
+              style={localStyles.logoImage}
+              resizeMode="stretch"
+            />
+            <Typography color={colors.primary} fontWeight="600">
+              {title}
+            </Typography>
           </View>
           <Typography
             color={colors.charcoalGrey}
@@ -104,15 +110,7 @@ const CustomModal = props => {
                 style={[localStyles.button, commonStyles.mr30]}
                 onPress={handleCancelClicked}>
                 <Typography color={colors.red} align={'right'}>
-                  {modalProps?.showReport
-                    ? 'Report'
-                    : modalProps?.showSkip
-                    ? 'Skip'
-                    : modalProps?.showConfirm
-                    ? 'Confirm'
-                    : modalProps?.showmodify
-                    ? 'Cancle'
-                    : 'Cancle'}
+                  Cancle
                 </Typography>
               </TouchableOpacity>
 
@@ -120,47 +118,7 @@ const CustomModal = props => {
                 style={[localStyles.button]}
                 onPress={handleMainClose}>
                 <Typography color={colors.primary} align={'right'}>
-                  {modalProps?.showConfirm
-                    ? 'Permisssion'
-                    : modalProps?.showmodify
-                    ? 'Update prtmission'
-                    : 'Okay'}
-                </Typography>
-              </TouchableOpacity>
-            </View>
-          ) : !!modalProps.showcontinueexit ? (
-            <View style={[commonStyles.rowEnd]}>
-              <TouchableOpacity
-                style={[localStyles.button, commonStyles.mr30]}
-                onPress={handleCancelClicked}>
-                <Typography color={colors.red} align={'right'}>
-                  Continue
-                </Typography>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={[localStyles.button]}
-                onPress={handleExitClick}>
-                <Typography color={colors.primary} align={'right'}>
-                  Exit
-                </Typography>
-              </TouchableOpacity>
-            </View>
-          ) : !!modalProps.showExit ? (
-            <View style={[commonStyles.rowEnd]}>
-              <TouchableOpacity
-                style={[localStyles.button, commonStyles.mr30]}
-                onPress={handleCancelClicked}>
-                <Typography color={colors.red} align={'right'}>
-                  Retry
-                </Typography>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={localStyles.button}
-                onPress={handleExitClick}>
-                <Typography color={colors.primary} align={'right'}>
-                  Exit
+                  Okay
                 </Typography>
               </TouchableOpacity>
             </View>
@@ -187,6 +145,11 @@ const localStyles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 1000,
   },
+  logoImage: {
+    height: verticalScale(30),
+    width: scale(60),
+    marginLeft: scale(-10),
+  },
   modal: {
     backgroundColor: colors.white,
     borderRadius: moderateScale(10),
@@ -199,6 +162,7 @@ const localStyles = StyleSheet.create({
     marginVertical: moderateScale(10),
     ...commonStyles.pv10,
     ...commonStyles.ml10,
+    fontSize: moderateScale(16),
   },
   buttonContainer: {
     flexDirection: 'row',

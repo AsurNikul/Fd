@@ -2,6 +2,7 @@
 // export {default as PrimaryBtn} from '../button';
 export {default as Typography} from '../Typography';
 // export {default as InputText} from '../TextField';
+export {default as Container} from '../Container';
 export {default as Header} from '../Header';
 export {default as Dropdown} from '../Dropdown';
 export {default as Loader} from '../Loader';

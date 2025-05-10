@@ -1,48 +1,103 @@
 import {StyleSheet} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import {
+  moderateScale,
+  ms,
+  scale,
+  verticalScale,
+  vs,
+} from 'react-native-size-matters';
 import {colors, commonStyles} from '../../../../theme';
-import {WIDTH} from '../../../../theme/commonStyle';
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.silver,
-    borderRadius: moderateScale(10),
-    marginRight: moderateScale(10),
-    height: moderateScale(310),
-    ...commonStyles.mt15,
-    ...commonStyles.p10,
+  cardContainer: {
     backgroundColor: colors.white,
-    width: WIDTH / 2.2,
+    width: '100%',
+    borderRadius: moderateScale(12),
+    gap: moderateScale(10),
+    ...commonStyles.lightShadow,
+    ...commonStyles.mt20,
+    borderColor: colors.quillGrey,
+    borderWidth: StyleSheet.hairlineWidth,
   },
-  imageStyle: {
-    height: moderateScale(110),
-    width: moderateScale(145),
+  cardHeaderContainer: {
+    backgroundColor: colors.primary,
+    width: '100%',
+    padding: moderateScale(15),
+    borderTopLeftRadius: moderateScale(12),
+    borderTopRightRadius: moderateScale(12),
+  },
+  rawContainer: {
+    backgroundColor: colors.lightWhite,
+    width: '46%',
     borderRadius: moderateScale(10),
-    marginBottom: moderateScale(6),
+    justifyContent: 'center',
+    paddingLeft: moderateScale(10),
+    paddingVertical: moderateScale(10),
+    overflow: 'hidden',
   },
-  addToCartContainer: {
-    backgroundColor: colors.navyBlue,
-    borderRadius: moderateScale(6),
-    ...commonStyles.rowCenter,
-    ...commonStyles.mb5,
-    ...commonStyles.mt10,
-    ...commonStyles.ph10,
-    paddingVertical: moderateScale(8),
+  startTime: {
+    backgroundColor: colors.primary,
+    width: moderateScale(10),
+    height: moderateScale(10),
+    borderRadius: moderateScale(10),
   },
-  plusStyle: {
-    ...commonStyles.size(13),
-    tintColor: colors.white,
+  endTime: {
+    backgroundColor: 'green',
+    width: moderateScale(10),
+    height: moderateScale(10),
+    borderRadius: moderateScale(10),
   },
-  addTxtStyle: {
-    alignSelf: 'center',
-    textAlign: 'center',
-    color: colors.white,
+  border: {
+    borderColor: colors.quillGrey,
+    borderWidth: StyleSheet.hairlineWidth,
+    marginVertical: moderateScale(15),
+  },
+  fullBorder: {
+    borderColor: colors.quillGrey,
+    borderWidth: StyleSheet.hairlineWidth,
     width: '100%',
   },
-  minusStyle: {
-    ...commonStyles.size(16),
-    tintColor: colors.white,
+  footerContainer: {
+    ...commonStyles.rowSpaceBetween,
+    height: verticalScale(40),
+    marginTop: verticalScale(-8),
+  },
+  footerSubContainer: {
+    ...commonStyles.rowCenter,
+    width: '45%',
+    ...commonStyles.center,
+  },
+  footerBorder: {
+    backgroundColor: colors.quillGrey,
+    height: verticalScale(40),
+    width: scale(1),
+  },
+  modalSubContainer: {
+    width: '90%',
+    backgroundColor: colors.white,
+    borderRadius: ms(6),
+    paddingTop: ms(10),
+    borderColor: colors.quillGrey,
+    borderWidth: StyleSheet.hairlineWidth,
+  },
+  headerContainer: {
+    ...commonStyles.rowSpaceBetween,
+    ...commonStyles.ph20,
+    borderBlockColor: colors.quillGrey,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingBottom: vs(10),
+    paddingTop: vs(5),
+  },
+  dateContainer: {
+    backgroundColor: colors.midWhite,
+    height: vs(40),
+    width: '90%',
+    alignSelf: 'center',
+    borderColor: colors.charcoalGrey,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: ms(6),
+    ...commonStyles.rowCenter,
+    ...commonStyles.ph15,
   },
 });
 

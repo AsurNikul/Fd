@@ -1,41 +1,56 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {addBatchProps} from '../utils/types';
 
 interface initialValType {
-  selectedProduct: any[];
+  cred: {
+    email: string;
+    password: string;
+    isLoggedIn: boolean;
+    confirmPassword?: string;
+    mobileNumber?: string;
+  };
+  batchData: addBatchProps[];
 }
 
 export const mainSliceInitialValue: initialValType = {
-  selectedProduct: [],
+  cred: {
+    email: '',
+    password: '',
+    isLoggedIn: false,
+  },
+  batchData: [],
 };
 
 const MainSlice = createSlice({
   name: 'main',
   initialState: mainSliceInitialValue,
   reducers: {
-    addProductToCart(state, action) {
-      const filteredData =
-        state.selectedProduct.filter(
-          (item: any) => item.id !== action.payload.id,
-        ) || [];
-      state.selectedProduct = [action.payload, ...filteredData];
+    setCredentials: (state, action) => {
+      state.cred = action.payload;
     },
-    removeProductFromCart(state, action) {
-      const filteredData =
-        state.selectedProduct.filter(
-          (item: any) => item.id !== action.payload.id,
-        ) || [];
-      state.selectedProduct = filteredData;
+    setAddBatchData: (state, action) => {
+      state.batchData.push(action.payload);
     },
-    removeAllProductFromCart(state) {
-      state.selectedProduct = [];
+    removeBatch: (state, action) => {
+      const index = state.batchData.findIndex(
+        item => item.batchNo === action.payload?.batchNo,
+      );
+      if (index !== -1) {
+        state.batchData.splice(index, 1);
+      }
+    },
+    editBatch: (state, action) => {
+      const index = state.batchData.findIndex(
+        item => item.batchNo === action.payload?.batchNo,
+      );
+      if (index !== -1) {
+        state.batchData[index] = action.payload;
+      }
     },
   },
 });
 
-export const {
-  addProductToCart,
-  removeProductFromCart,
-  removeAllProductFromCart,
-} = MainSlice.actions;
+export const {setCredentials, setAddBatchData, removeBatch, editBatch} =
+  MainSlice.actions;
 
 export default MainSlice.reducer;
