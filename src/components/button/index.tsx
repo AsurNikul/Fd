@@ -8,7 +8,6 @@ import {
   TouchableOpacityProps,
 } from 'react-native';
 
-import styles from './styles';
 import Typography from '../Typography';
 import {colors} from '../../theme';
 import {HEIGHT, WIDTH} from '../../theme';
@@ -18,6 +17,7 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
+import styles from './styles';
 
 interface ButtonProps extends TouchableOpacityProps {
   buttonContainerStyle?: StyleProp<any>;

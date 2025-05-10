@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import Container from '../../../components/Container';
-import Button from '../../../components/Button';
 import {showPopupWithOk} from '../../../utils';
+import {Button} from '../../../components/All';
 
 type Props = {};
 

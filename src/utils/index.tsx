@@ -7,7 +7,7 @@ export const hapticOptions = {
   ignoreAndroidSystemSettings: false,
 };
 
-export {navigate, push, replace, goBack, reset} from './navigationServices';
+export {navigate, push, replace, goBack, reset} from './NavigationServices';
 
 export type {CustomSvgProps, ImagePickerResponse} from './types';
 export {showPopupWithOk, showPopupWithOkAndCancel} from './Func';
