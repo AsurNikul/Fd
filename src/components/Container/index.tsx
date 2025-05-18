@@ -61,8 +61,7 @@ const Container: FC<ContainerProps> = props => {
     return (
       <KeyboardAvoidingView
         style={commonStyles.flex}
-        behavior={isIOS ? 'padding' : 'height'}
-        keyboardVerticalOffset={isIOS ? 0 : verticalScale(30)}>
+        behavior={isIOS ? 'padding' : 'height'}>
         {title && <Header title={title} {...restProps} />}
         <ScrollView
           showsVerticalScrollIndicator={false}

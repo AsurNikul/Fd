@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Container from '../../../components/Container';
 import {useSelector} from 'react-redux';
@@ -8,9 +8,10 @@ import {Images} from '../../../constants';
 import {commonStyles} from '../../../theme';
 import Typography from '../../../components/Typography';
 import {FilterModal, MiniProducts} from '../Home/components';
+import Button from '../../../components/button';
 
 const FilteredBatches = () => {
-  const routeData = useRoute<any>().params?.item;
+  const routeData = useRoute<any>().params?.data;
   const allBatches = useSelector(getBatchData);
   const [filteredBatches, setFilteredBatches] = useState<any>([]);
 
@@ -37,6 +38,7 @@ const FilteredBatches = () => {
     filterBatches(filterValues.startDate, filterValues.endDate);
     setShowFilterModal(false);
   };
+  const handleCloseFilterModal = () => setShowFilterModal(false);
 
   return (
     <Container
@@ -44,22 +46,29 @@ const FilteredBatches = () => {
       showLeftIcon
       rightIcon={Images.filter}
       onRightPress={handleOpenFilterModal}>
-      <FlatList
-        data={filteredBatches}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
-        contentContainerStyle={[commonStyles.pb100]}
-        ListEmptyComponent={() => (
-          <Typography
-            title="No Data Found"
-            fontWeight="600"
-            mt={100}
-            size={28}
-          />
-        )}
-        renderItem={({item}) => <MiniProducts item={item} />}
+      <View style={{flex: 0.95}}>
+        <FlatList
+          data={filteredBatches}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(_, index) => index.toString()}
+          contentContainerStyle={[commonStyles.pb100]}
+          ListEmptyComponent={() => (
+            <Typography
+              title="No Data Found"
+              fontWeight="600"
+              mt={100}
+              size={28}
+            />
+          )}
+          renderItem={({item}) => <MiniProducts item={item} />}
+        />
+      </View>
+      <Button title="Export" />
+      <FilterModal
+        visible={showFilterModal}
+        onApplyPress={handleApplyFilter}
+        onRequestClose={handleCloseFilterModal}
       />
-      <FilterModal visible={showFilterModal} onApplyPress={handleApplyFilter} />
     </Container>
   );
 };

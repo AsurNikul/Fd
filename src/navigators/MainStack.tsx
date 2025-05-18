@@ -21,8 +21,13 @@ const MainStack = () => {
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
-        <Stack.Screen name={SCREENS.Home} component={Screens.Home} />
+        <Stack.Screen
+          name={SCREENS.DrawerStack}
+          component={Screens.DrawerStack}
+        />
         <Stack.Screen name={SCREENS.AddCard} component={Screens.AddCard} />
+        <Stack.Screen name={SCREENS.Users} component={Screens.Users} />
+        <Stack.Screen name={SCREENS.REGISTER} component={Screens.Register} />
         <Stack.Screen name={SCREENS.ViewCart} component={Screens.ViewCart} />
         <Stack.Screen
           name={SCREENS.FilteredBatches}

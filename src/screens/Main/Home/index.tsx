@@ -8,26 +8,27 @@ import {getBatchData} from '../../../redux/customSelector';
 import {FilterModal, MiniProducts} from './components';
 import {Typography, VectorIcon} from '../../../components/All';
 import {colors, commonStyles} from '../../../theme';
+import {useNavigation} from '@react-navigation/native';
 
 const Home = () => {
+  const navigation = useNavigation<any>();
   const batchData = useSelector(getBatchData);
   const handleAddCard = () => navigate(Routes.AddCard);
   const [filterModal, setFilterModal] = useState(false);
 
   const renderLeft = () => {
     return (
-      <TouchableOpacity
-        style={styles.headerLeftImg}
-        onPress={handleOpenFilterModal}>
+      <TouchableOpacity style={styles.headerLeftImg} onPress={toggleDrawer}>
         <VectorIcon
-          name="filter-plus-outline"
-          icon="MaterialCommunityIcons"
+          name="menu"
+          icon="Entypo"
           color={colors.white}
-          onPress={handleOpenFilterModal}
+          onPress={toggleDrawer}
         />
       </TouchableOpacity>
     );
   };
+  const toggleDrawer = () => navigation.openDrawer();
   const handleOpenFilterModal = () => setFilterModal(true);
   const handleCloseFilterModal = () => setFilterModal(false);
   const handleApplyFilter = (data: any) => {
@@ -37,9 +38,9 @@ const Home = () => {
   return (
     <Container
       title="Home"
-      rightIcon={Images.plus}
+      rightIcon={Images.filter}
       renderLeftIcon={renderLeft}
-      onRightPress={handleAddCard}>
+      onRightPress={handleOpenFilterModal}>
       <View style={commonStyles.flex}>
         <FlatList
           data={batchData}

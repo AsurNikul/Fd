@@ -6,6 +6,8 @@ const Routes = {
   ViewCart: 'ViewCart',
   AddCard: 'AddCard',
   FilteredBatches: 'FilteredBatches',
+  DrawerStack: 'DrawerStack',
+  Users: 'Users',
 };
 
 export default Routes;

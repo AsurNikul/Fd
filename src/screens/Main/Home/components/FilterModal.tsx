@@ -39,6 +39,8 @@ const FilterModal: FC<FilterModalProps> = props => {
       endDate: new Date(endDate),
     };
     onApplyPress(data);
+    setStartDate(null);
+    setEndDate(null);
   };
   return (
     <Modal transparent {...props}>

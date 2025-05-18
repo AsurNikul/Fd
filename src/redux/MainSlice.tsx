@@ -9,7 +9,8 @@ interface initialValType {
     confirmPassword?: string;
     mobileNumber?: string;
   };
-  batchData: addBatchProps[];
+  batchData: any[];
+  userList: any[];
 }
 
 export const mainSliceInitialValue: initialValType = {
@@ -19,6 +20,7 @@ export const mainSliceInitialValue: initialValType = {
     isLoggedIn: false,
   },
   batchData: [],
+  userList: [],
 };
 
 const MainSlice = createSlice({
@@ -28,7 +30,16 @@ const MainSlice = createSlice({
     setCredentials: (state, action) => {
       state.cred = action.payload;
     },
+    addUsers: (state, action) => {
+      if (!state.userList) {
+        state.userList = [];
+      }
+      state.userList.push(action.payload);
+    },
     setAddBatchData: (state, action) => {
+      if (!state.batchData) {
+        state.batchData = [];
+      }
       state.batchData.push(action.payload);
     },
     removeBatch: (state, action) => {
@@ -47,10 +58,19 @@ const MainSlice = createSlice({
         state.batchData[index] = action.payload;
       }
     },
+    removeAllBatch: state => {
+      state.batchData = [];
+    },
   },
 });
 
-export const {setCredentials, setAddBatchData, removeBatch, editBatch} =
-  MainSlice.actions;
+export const {
+  setCredentials,
+  setAddBatchData,
+  removeBatch,
+  editBatch,
+  removeAllBatch,
+  addUsers,
+} = MainSlice.actions;
 
 export default MainSlice.reducer;

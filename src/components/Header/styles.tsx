@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import {colors} from '../../theme';
+import {WIDTH, colors, commonStyles} from '../../theme';
 import {Fonts} from '../../constants';
 
 const styles = StyleSheet.create({
@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: moderateScale(10),
     paddingBottom: moderateScale(15),
+  },
+  stripContainer: {
+    width: WIDTH,
+    backgroundColor: '#4F8EF7',
+    ...commonStyles.ph15,
+    ...commonStyles.pv5,
+    ...commonStyles.rowSpaceBetween,
   },
   smallContainer: {
     width: '15%',

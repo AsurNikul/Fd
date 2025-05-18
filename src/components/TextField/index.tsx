@@ -134,7 +134,7 @@ const TextField: FunctionComponent<InputProps> = props => {
           onFocus={() => setFocus(true)}
           placeholder={title}
           secureTextEntry={isPassword && showPassword}
-          placeholderTextColor={colors.black}
+          placeholderTextColor={colors.charcoalGrey}
           value={name ? values[name] : ''}
           {...props}
         />

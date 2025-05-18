@@ -16,5 +16,6 @@ const colors = {
   quillGrey: '#D3D3D3',
   oil: '#2D201C',
   midWhite: '#F9FAFB',
+  darkBlue: '#3B82F6',
 };
 export default colors;

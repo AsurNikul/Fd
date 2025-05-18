@@ -9,6 +9,5 @@ export const registerValues: registerProps = {
   username: '',
   email: '',
   password: '',
-  confirmPassword: '',
   mobileNumber: '',
 };

@@ -1121,7 +1121,7 @@ PODS:
     - React-Core
   - RNDateTimePicker (8.3.0):
     - React-Core
-  - RNGestureHandler (2.25.0):
+  - RNGestureHandler (2.16.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1143,11 +1143,10 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - ReactCommon/turbomodule/core
-  - RNScreens (3.37.0):
+  - RNScreens (3.30.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-    - React-RCTImage
   - RNSVG (15.11.2):
     - React-Core
   - SocketRocket (0.6.1)
@@ -1439,11 +1438,11 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: b6410dead2732b5c72a7fdb1ecb5651bbcf4674b
   RNCMaskedView: 3f3c27b339db863b1fd5f39cc9660484ecfd46ee
   RNDateTimePicker: 29264364ea7b8cc0fb355b3843cf276a4ff78966
-  RNGestureHandler: c50114bf77ef1b1f44717cd593c9b1206dc97149
+  RNGestureHandler: e262eeb792addec0705a116456f210ee1be0dcd0
   RNImageCropPicker: b0afedeefd8655254a15c34103718455fde6ce59
   RNReactNativeHapticFeedback: 9d07fb28f9ef1e81440181602954cb3c78d30184
   RNReanimated: 1ef68beaad1a8f4cb2a9098d0d3c374a2e3fd51a
-  RNScreens: 3ce54903891fd6281865ad3e7cfe4c2bb438c70c
+  RNScreens: cedc9bffb599d0bcd57903ef2ce0eef1df5d1065
   RNSVG: 36ab724902de0406127ef8d63d940c055e2a1442
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654

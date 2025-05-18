@@ -57,11 +57,11 @@ const MiniProducts = (props: MiniProductsProps) => {
           />
         </View>
       </View>
-      <View style={[commonStyles.rowSpaceBetween, commonStyles.mh10]}>
+      <View>
         <View style={styles.rawContainer}>
           <Typography
             title={'Raw Material'}
-            size={13}
+            size={15}
             color={colors.charcoalGrey}
           />
           <Typography
@@ -71,10 +71,10 @@ const MiniProducts = (props: MiniProductsProps) => {
             fontWeight="600"
           />
         </View>
-        <View style={styles.rawContainer}>
+        {/* <View style={styles.rawContainer}>
           <Typography title={'Sales'} size={13} color={colors.charcoalGrey} />
           <Typography title={item?.sale} size={15} mt={3} fontWeight="600" />
-        </View>
+        </View> */}
       </View>
       <View style={[commonStyles.ph20]}>
         <View style={[commonStyles.rowCenter, commonStyles.mb15]}>

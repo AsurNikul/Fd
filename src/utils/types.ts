@@ -38,7 +38,6 @@ export interface registerProps {
   username: string;
   email: string;
   password: string;
-  confirmPassword: string;
   mobileNumber: string;
 }
 
@@ -48,5 +47,5 @@ export interface addBatchProps {
   rmKg: string;
   inTime: any;
   outTime: any;
-  sale: string;
+  // sale: string;
 }

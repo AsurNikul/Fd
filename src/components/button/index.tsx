@@ -72,25 +72,25 @@ const Button: FC<ButtonProps> = props => {
     };
   }, []);
 
-  useEffect(() => {
-    if (loading) {
-      animHeight.value = withTiming(finalHeight);
-      animWidth.value = withTiming(finalWidth / 6);
-      animRadius.value = withTiming(Math.min(finalHeight, finalWidth / 6) / 2);
-    } else {
-      animHeight.value = withTiming(finalHeight);
-      animWidth.value = withTiming(finalWidth);
-      animRadius.value = withTiming(finalRadius);
-    }
-  }, [
-    loading,
-    animHeight,
-    animRadius,
-    animWidth,
-    finalHeight,
-    finalRadius,
-    finalWidth,
-  ]);
+  // useEffect(() => {
+  //   if (loading) {
+  //     animHeight.value = withTiming(finalHeight);
+  //     animWidth.value = withTiming(finalWidth / 6);
+  //     animRadius.value = withTiming(Math.min(finalHeight, finalWidth / 6) / 2);
+  //   } else {
+  //     animHeight.value = withTiming(finalHeight);
+  //     animWidth.value = withTiming(finalWidth);
+  //     animRadius.value = withTiming(finalRadius);
+  //   }
+  // }, [
+  //   loading,
+  //   animHeight,
+  //   animRadius,
+  //   animWidth,
+  //   finalHeight,
+  //   finalRadius,
+  //   finalWidth,
+  // ]);
 
   const handlePress = (e: GestureResponderEvent) => {
     if (enablePressBounceEffect) {

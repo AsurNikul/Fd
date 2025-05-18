@@ -13,10 +13,13 @@ import {moderateScale} from 'react-native-size-matters';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import Typography from '../Typography';
-import {colors} from '../../theme';
-import {goBack} from '../../utils';
+import {WIDTH, colors, commonStyles} from '../../theme';
+import {goBack, showPopupWithOkAndCancel} from '../../utils';
 import styles from './styles';
 import {BackSVG} from '../../assets/svg';
+import {VectorIcon} from '../All';
+import {useDispatch, useSelector} from 'react-redux';
+import {getAuth, removeAllBatch, setCredentials} from '../../redux';
 
 export interface HeaderProps {
   containerStyle?: StyleProp<ViewStyle>;
@@ -32,6 +35,7 @@ export interface HeaderProps {
   backgroundColor?: string;
   showLeftIcon?: boolean;
   renderLeftIcon?: () => ReactNode;
+  showStrip?: boolean;
 }
 
 const Header: FC<HeaderProps> = props => {
@@ -47,21 +51,18 @@ const Header: FC<HeaderProps> = props => {
     onRightPress,
     showLeftIcon,
     renderLeftIcon,
+    showStrip,
   } = props;
   const handleLeftPress = () => goBack();
   const insets = useSafeAreaInsets();
 
   return (
-    <>
-      <View
-        style={[
-          styles.mainContainer,
-          containerStyle,
-          {
-            paddingTop: insets.top + moderateScale(10),
-            backgroundColor: backgroundColor || colors.primary,
-          },
-        ]}>
+    <View
+      style={{
+        paddingTop: insets.top + moderateScale(10),
+        backgroundColor: backgroundColor || colors.primary,
+      }}>
+      <View style={[styles.mainContainer, containerStyle]}>
         {!renderLeftIcon && (
           <>
             {showLeftIcon ? (
@@ -100,7 +101,7 @@ const Header: FC<HeaderProps> = props => {
         )}
       </View>
       <View style={styles.headerBorder} />
-    </>
+    </View>
   );
 };
 

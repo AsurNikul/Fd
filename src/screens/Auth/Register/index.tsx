@@ -1,23 +1,19 @@
 import {View} from 'react-native';
 import React, {useState} from 'react';
-import {
-  Button,
-  Container,
-  TextField,
-  Typography,
-} from '../../../components/All';
+import {Button, Container, TextField} from '../../../components/All';
 import {useFormik} from 'formik';
 import {
+  goBack,
   navigate,
   registerProps,
   registerSchema,
   registerValues,
+  showPopupWithOk,
 } from '../../../utils';
-import {colors, commonStyles} from '../../../theme';
+import {commonStyles} from '../../../theme';
 import {moderateScale} from 'react-native-size-matters';
 import {useDispatch} from 'react-redux';
-import {setCredentials} from '../../../redux';
-import {Routes} from '../../../constants';
+import {addUsers} from '../../../redux';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -33,19 +29,19 @@ const Register = () => {
       username: values.username,
       email: values.email,
       password: values.password,
-      confirmPassword: values.confirmPassword,
       mobileNumber: values.mobileNumber,
-      isLoggedIn: true,
     };
     setLoading(true);
-    dispatch(setCredentials(data));
+    dispatch(addUsers(data));
+    showPopupWithOk('Global Spintex', 'User added successfully', () => {
+      setLoading(false);
+      goBack();
+    });
     setLoading(false);
   };
-  const handleLogin = () => navigate(Routes.LOGIN);
   const {handleSubmit} = formik;
   return (
-    <Container isAvoidKeyboard>
-      <Typography title={'Create an\nAccount'} mt={30} ml={30} size={30} />
+    <Container isAvoidKeyboard title="Add User" showLeftIcon>
       <View style={commonStyles.mv20}>
         <TextField
           formik={formik}
@@ -60,6 +56,7 @@ const Register = () => {
           placeholder="Enter Number"
           iconName="phone"
           iconType="Feather"
+          keyboardType="number-pad"
         />
         <TextField
           formik={formik}
@@ -77,29 +74,14 @@ const Register = () => {
           iconType="Feather"
           iconName="lock"
         />
-        <TextField
-          formik={formik}
-          name={'confirmPassword'}
-          placeholder="Enter Confirm Password"
-          isPassword
-          iconType="Feather"
-          iconName="lock"
-        />
       </View>
       <Button
-        title="REGISTER"
+        title="Add User"
         width={moderateScale(190)}
         borderRadius={50}
-        backgroundColor={colors.black}
         buttonContainerStyle={[commonStyles.mv30, commonStyles.mb30]}
         onPress={() => handleSubmit()}
         loading={loading}
-      />
-      <Typography
-        title={'Login'}
-        align="center"
-        size={14}
-        onPress={handleLogin}
       />
     </Container>
   );

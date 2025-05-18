@@ -31,27 +31,26 @@ const AddCard = () => {
       rmKg: batch?.rmKg || '',
       inTime: batch?.inTime || '',
       outTime: batch?.outTime || '',
-      sale: batch?.sale || '',
+      // sale: batch?.sale || '',
     },
     validationSchema: addBatchSchema,
     onSubmit: values => handleAddBatchData(values),
   });
   const handleAddBatchData = (values: addBatchProps) => {
-    if (!values) return;
-
     const data: addBatchProps = {
       date: new Date(values.date),
       batchNo: values.batchNo,
       rmKg: values.rmKg,
       inTime: new Date(values.inTime),
       outTime: new Date(values.outTime),
-      sale: values.sale,
+      // sale: values.sale,
     };
     if (batch?.batchNo) {
       dispatch(editBatch(data));
     } else {
       dispatch(setAddBatchData(data));
     }
+    console.log(data, 'this is data');
     formik.resetForm();
     goBack();
   };
@@ -152,14 +151,14 @@ const AddCard = () => {
       {isError('outTime', errors, touched) && (
         <Typography title={errors.outTime} txtStyle={commonStyles.error} />
       )}
-      <TextField
+      {/* <TextField
         formik={formik}
         name={'sale'}
         placeholder="Enter Sale"
         iconName="sale"
         iconType="MaterialCommunityIcons"
         keyboardType="numeric"
-      />
+      /> */}
       <Button
         title={buttonTitle}
         onPress={() => formik.handleSubmit()}

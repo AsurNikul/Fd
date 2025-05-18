@@ -23,9 +23,6 @@ export const registerSchema = Yup.object().shape({
       'Password must contain at least one number, one uppercase letter, and one special character',
     )
     .min(8, 'Password must be at least 8 characters'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match')
-    .required('Confirm Password is required'),
   mobileNumber: Yup.string()
     .required('Mobile number is required')
     .matches(/^[0-9]{10}$/, 'Mobile number must be 10 digits'),
@@ -50,8 +47,8 @@ export const addBatchSchema = Yup.object().shape({
         return new Date(value) > new Date(inTime);
       },
     ),
-  sale: Yup.number()
-    .typeError('Sale must be a number')
-    .min(0, 'Sale cannot be negative')
-    .required('Sale is required'),
+  // sale: Yup.number()
+  //   .typeError('Sale must be a number')
+  //   .min(0, 'Sale cannot be negative')
+  //   .required('Sale is required'),
 });

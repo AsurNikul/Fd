@@ -41,7 +41,12 @@ const Login = () => {
   const handleRegister = () => navigate(Routes.REGISTER);
   return (
     <Container isAvoidKeyboard>
-      <Typography title={'Log into\nyour account'} ml={30} size={30} />
+      <Typography
+        title={'Log into\nyour account'}
+        ml={30}
+        size={30}
+        color={colors.primary}
+      />
       <View style={commonStyles.mv20}>
         <TextField
           formik={formik}
@@ -63,16 +68,9 @@ const Login = () => {
         title="LOG IN"
         width={moderateScale(140)}
         borderRadius={50}
-        backgroundColor={colors.black}
         buttonContainerStyle={[commonStyles.mv30, commonStyles.mb30]}
         onPress={() => handleSubmit()}
         loading={loading}
-      />
-      <Typography
-        title="Create an account"
-        align="center"
-        size={14}
-        onPress={handleRegister}
       />
     </Container>
   );
