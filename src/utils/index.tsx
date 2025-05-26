@@ -15,6 +15,11 @@ export type {
   loginDetailProps,
   registerProps,
 } from './types';
-export {showPopupWithOk, showPopupWithOkAndCancel, isError} from './Func';
+export {
+  showPopupWithOk,
+  showPopupWithOkAndCancel,
+  isError,
+  apiCall,
+} from './Func';
 export {loginValues, registerValues} from './formikValues';
 export {loginSchema, registerSchema, addBatchSchema} from './schema';

@@ -3,22 +3,23 @@ import {addBatchProps} from '../utils/types';
 
 interface initialValType {
   cred: {
-    email: string;
-    password: string;
-    isLoggedIn: boolean;
-    confirmPassword?: string;
-    mobileNumber?: string;
-  };
+    success: boolean;
+    message: string;
+    token: string;
+    user: {
+      id: number;
+      username: string;
+      email: string;
+      display_name: string;
+      role: string;
+    };
+  } | null;
   batchData: any[];
   userList: any[];
 }
 
 export const mainSliceInitialValue: initialValType = {
-  cred: {
-    email: '',
-    password: '',
-    isLoggedIn: false,
-  },
+  cred: null,
   batchData: [],
   userList: [],
 };

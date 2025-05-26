@@ -1,71 +1,114 @@
 import {View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Container, TextField} from '../../../components/All';
 import {useFormik} from 'formik';
 import {
+  apiCall,
   goBack,
   navigate,
   registerProps,
   registerSchema,
-  registerValues,
   showPopupWithOk,
 } from '../../../utils';
 import {commonStyles} from '../../../theme';
 import {moderateScale} from 'react-native-size-matters';
-import {useDispatch} from 'react-redux';
-import {addUsers} from '../../../redux';
+import {CREATE_USER, EDIT_USER} from '../../../Services/API';
+import {useRoute} from '@react-navigation/native';
+import {editUserSchema} from '../../../utils/schema';
 
 const Register = () => {
-  const dispatch = useDispatch();
+  const route = useRoute<any>().params?.item;
   const [loading, setLoading] = useState<boolean>(false);
+  const [registerValues, setRegisterValues] = useState<registerProps>({
+    firstName: route?.first_name,
+    lastName: route?.last_name,
+    email: route?.email,
+    password: '',
+    mobileNumber: route?.mobile_number,
+    confirmPassword: '',
+  });
+
+  useEffect(() => {
+    if (route) {
+      setRegisterValues({
+        firstName: route.first_name,
+        lastName: route.last_name,
+        email: route.email,
+        mobileNumber: route.mobile_number,
+        password: '',
+        confirmPassword: '',
+      });
+    }
+  }, [route]);
 
   const formik = useFormik({
     initialValues: registerValues,
-    validationSchema: registerSchema,
+    validationSchema: route ? editUserSchema : registerSchema,
     onSubmit: values => handleRegister(values),
   });
   const handleRegister = async (values: registerProps) => {
     const data = {
-      username: values.username,
-      email: values.email,
+      first_name: values.firstName,
+      last_name: values.lastName,
       password: values.password,
-      mobileNumber: values.mobileNumber,
+      confirm_password: values.confirmPassword,
     };
+    if (!route) {
+      (data.mobile_number = values.mobileNumber), (data.email = values.email);
+      data.role = 'user';
+    }
+    const url = route ? `${EDIT_USER}${route?.id}` : CREATE_USER;
+    const method = route ? 'PUT' : 'POST';
     setLoading(true);
-    dispatch(addUsers(data));
-    showPopupWithOk('Global Spintex', 'User added successfully', () => {
-      setLoading(false);
-      goBack();
-    });
-    setLoading(false);
+    apiCall(url, method, data)
+      .then(res => {
+        setLoading(false);
+        showPopupWithOk('Success', res?.message, () => goBack());
+      })
+      .finally(() => setLoading(false));
   };
   const {handleSubmit} = formik;
   return (
-    <Container isAvoidKeyboard title="Add User" showLeftIcon>
+    <Container
+      isAvoidKeyboard
+      title={route ? 'Edit User' : 'Add User'}
+      showLeftIcon>
       <View style={commonStyles.mv20}>
         <TextField
           formik={formik}
-          name={'username'}
-          placeholder="Enter username"
+          name={'firstName'}
+          placeholder="Enter First Name"
           iconName="user"
           iconType="AntDesign"
         />
         <TextField
           formik={formik}
-          name={'mobileNumber'}
-          placeholder="Enter Number"
-          iconName="phone"
-          iconType="Feather"
-          keyboardType="number-pad"
+          name={'lastName'}
+          placeholder="Enter Last Name"
+          iconName="user"
+          iconType="AntDesign"
         />
-        <TextField
-          formik={formik}
-          name={'email'}
-          placeholder="Email address"
-          keyboardType="email-address"
-          iconName="email"
-          iconType="Fontisto"
-        />
+        {!route && (
+          <>
+            <TextField
+              formik={formik}
+              name={'mobileNumber'}
+              placeholder="Enter Number"
+              iconName="phone"
+              iconType="Feather"
+              keyboardType="number-pad"
+            />
+            <TextField
+              formik={formik}
+              name={'email'}
+              placeholder="Email address"
+              keyboardType="email-address"
+              iconName="email"
+              iconType="Fontisto"
+              editable={route}
+            />
+          </>
+        )}
         <TextField
           formik={formik}
           name={'password'}
@@ -74,9 +117,19 @@ const Register = () => {
           iconType="Feather"
           iconName="lock"
         />
+        {route && (
+          <TextField
+            formik={formik}
+            name={'confirmPassword'}
+            placeholder="Enter Confirm Password"
+            isPassword
+            iconType="Feather"
+            iconName="lock"
+          />
+        )}
       </View>
       <Button
-        title="Add User"
+        title={route ? 'Edit User' : 'Add User'}
         width={moderateScale(190)}
         borderRadius={50}
         buttonContainerStyle={[commonStyles.mv30, commonStyles.mb30]}

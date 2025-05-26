@@ -15,7 +15,8 @@ export const loginSchema = Yup.object().shape({
 
 export const registerSchema = Yup.object().shape({
   email: Yup.string().required('Email is required').email('Invalid email'),
-  username: Yup.string().required('Username is required'),
+  firstName: Yup.string().required('First Name is required'),
+  lastName: Yup.string().required('Last Name is required'),
   password: Yup.string()
     .required('Password is required')
     .matches(
@@ -28,9 +29,24 @@ export const registerSchema = Yup.object().shape({
     .matches(/^[0-9]{10}$/, 'Mobile number must be 10 digits'),
 });
 
+export const editUserSchema = Yup.object().shape({
+  firstName: Yup.string().required('First Name is required'),
+  lastName: Yup.string().required('Last Name is required'),
+  password: Yup.string()
+    .required('Password is required')
+    .matches(
+      /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/,
+      'Password must contain at least one number, one uppercase letter, and one special character',
+    )
+    .min(8, 'Password must be at least 8 characters'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Passwords must match')
+    .required('Confirm Password is required'),
+});
+
 export const addBatchSchema = Yup.object().shape({
-  date: Yup.date().required('Date is required'),
-  batchNo: Yup.string().required('Batch number is required'),
+  // date: Yup.date().required('Date is required'),
+  // batchNo: Yup.string().required('Batch number is required'),
   rmKg: Yup.number()
     .typeError('RM (KG) must be a number')
     .positive('Must be greater than 0')

@@ -35,15 +35,17 @@ export interface loginDetailProps {
 }
 
 export interface registerProps {
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   mobileNumber: string;
+  confirmPassword?: string;
 }
 
 export interface addBatchProps {
-  date: any;
-  batchNo: string;
+  // date: any;
+  // batchNo: string;
   rmKg: string;
   inTime: any;
   outTime: any;

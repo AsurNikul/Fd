@@ -44,6 +44,7 @@ interface InputProps extends TextInputProps {
   isPassword?: boolean;
   iconName?: string;
   iconType?: IconType;
+  loading?: boolean;
 }
 
 const TextField: FunctionComponent<InputProps> = props => {
@@ -62,6 +63,7 @@ const TextField: FunctionComponent<InputProps> = props => {
     isPassword,
     iconName,
     iconType,
+    loading,
   } = props;
 
   const [focus, setFocus] = useState<boolean>(false);
@@ -137,6 +139,7 @@ const TextField: FunctionComponent<InputProps> = props => {
           placeholderTextColor={colors.charcoalGrey}
           value={name ? values[name] : ''}
           {...props}
+          editable={props.editable || !loading}
         />
         {isPassword && (
           <TouchableOpacity onPress={togglePasswordVisibility}>

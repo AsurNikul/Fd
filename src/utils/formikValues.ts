@@ -6,7 +6,8 @@ export const loginValues: loginDetailProps = {
 };
 
 export const registerValues: registerProps = {
-  username: '',
+  firstName: '',
+  lastName: '',
   email: '',
   password: '',
   mobileNumber: '',

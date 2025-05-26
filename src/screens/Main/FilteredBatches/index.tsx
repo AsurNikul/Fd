@@ -1,42 +1,104 @@
-import {FlatList, View} from 'react-native';
+import {ActivityIndicator, FlatList, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Container from '../../../components/Container';
 import {useSelector} from 'react-redux';
 import {getBatchData} from '../../../redux/customSelector';
-import {useRoute} from '@react-navigation/native';
+import {useIsFocused, useRoute} from '@react-navigation/native';
 import {Images} from '../../../constants';
-import {commonStyles} from '../../../theme';
+import {colors, commonStyles} from '../../../theme';
 import Typography from '../../../components/Typography';
 import {FilterModal, MiniProducts} from '../Home/components';
 import Button from '../../../components/button';
+import {ALL_BATCHES} from '../../../Services/API';
+import moment from 'moment';
+import {apiCall} from '../../../utils';
+import Loader from '../../../components/Loader';
 
 const FilteredBatches = () => {
   const routeData = useRoute<any>().params?.data;
   const allBatches = useSelector(getBatchData);
+  const focus = useIsFocused();
+  const [data, setData] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const [filteredBatches, setFilteredBatches] = useState<any>([]);
-
+  const [page, setPage] = useState<number>(1);
+  const [mainData, setMainData] = useState<any>([]);
+  const [bottomLoading, setBottomLoading] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
+  const [filterValues, setFilterValues] = useState<any>({
+    startDate: routeData?.startDate,
+    endDate: routeData?.endDate,
+  });
   const handleOpenFilterModal = () => setShowFilterModal(true);
-
-  const filterBatches = (startDate: Date, endDate: Date) => {
-    const result = allBatches.filter((item: any) => {
-      return item.date >= startDate && item.date <= endDate;
-    });
-    setFilteredBatches(result);
-  };
+  let timer: any;
 
   useEffect(() => {
-    if (routeData?.startDate && routeData?.endDate) {
-      filterBatches(routeData.startDate, routeData.endDate);
+    if (focus) {
+      getAllBatches(page, routeData?.startDate, routeData?.endDate);
     }
-  }, [allBatches, routeData]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
-  const handleApplyFilter = (filterValues: {
+  const getAllBatches = async (
+    tempPage?: number,
+    startDate?: any,
+    endDate?: any,
+  ) => {
+    const finalPage = tempPage ? tempPage : page;
+    if (finalPage > 1) {
+      setBottomLoading(true);
+    } else {
+      setLoading(true);
+    }
+    await apiCall(
+      `${ALL_BATCHES}?page=${finalPage}&per_page=5&from_date=${moment(
+        startDate,
+      ).format('YYYY-MM-DD')}&to_date=${moment(endDate).format('YYYY-MM-DD')}`,
+      'GET',
+    )
+      .then(res => {
+        setMainData(res);
+        if (finalPage === 1) {
+          // Replace data for first page
+          setData(res?.batches);
+        } else {
+          // Append data for next pages
+          setData(prevData => [...prevData, ...res?.batches]);
+        }
+      })
+      .catch(() => {
+        setData([]);
+        setMainData({});
+        setPage(1);
+      })
+      .finally(() => {
+        setLoading(false);
+        setBottomLoading(false);
+      });
+  };
+
+  const handleApplyFilter = async (filterValues: {
     startDate: Date;
     endDate: Date;
   }) => {
-    filterBatches(filterValues.startDate, filterValues.endDate);
+    setFilterValues(filterValues);
     setShowFilterModal(false);
+    timer = setTimeout(async () => {
+      await getAllBatches(1, filterValues.startDate, filterValues.endDate);
+    }, 300);
+  };
+  const handleEndReach = async () => {
+    const tempPage = page + 1;
+    if (tempPage <= mainData?.total_pages && !loading && !bottomLoading) {
+      setPage(prev => prev + 1);
+      await getAllBatches(
+        tempPage,
+        filterValues?.startDate,
+        filterValues?.endDate,
+      );
+    }
   };
   const handleCloseFilterModal = () => setShowFilterModal(false);
 
@@ -46,13 +108,39 @@ const FilteredBatches = () => {
       showLeftIcon
       rightIcon={Images.filter}
       onRightPress={handleOpenFilterModal}>
-      <View style={{flex: 0.95}}>
-        <FlatList
-          data={filteredBatches}
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(_, index) => index.toString()}
-          contentContainerStyle={[commonStyles.pb100]}
-          ListEmptyComponent={() => (
+      <Loader visible={loading} />
+      {data.length > 0 ? (
+        <View style={{flex: 0.95}}>
+          <FlatList
+            data={data}
+            showsVerticalScrollIndicator={false}
+            keyExtractor={(_, index) => index.toString()}
+            contentContainerStyle={[commonStyles.pb100]}
+            onEndReached={handleEndReach}
+            onEndReachedThreshold={0.4}
+            ListEmptyComponent={() => (
+              <Typography
+                title="No Data Found"
+                fontWeight="600"
+                mt={100}
+                size={28}
+              />
+            )}
+            ListFooterComponent={() => {
+              return bottomLoading ? (
+                <ActivityIndicator
+                  color={colors.primary}
+                  size={'large'}
+                  style={commonStyles.mt25}
+                />
+              ) : null;
+            }}
+            renderItem={({item}) => <MiniProducts item={item} />}
+          />
+        </View>
+      ) : (
+        <View style={{flex: 0.95}}>
+          {!loading && (
             <Typography
               title="No Data Found"
               fontWeight="600"
@@ -60,9 +148,8 @@ const FilteredBatches = () => {
               size={28}
             />
           )}
-          renderItem={({item}) => <MiniProducts item={item} />}
-        />
-      </View>
+        </View>
+      )}
       <Button title="Export" />
       <FilterModal
         visible={showFilterModal}

@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "lint": "eslint .",
-    "start": "react-native start",
+    "start": "npx react-native start --experimental-debugger",
     "reset": "react-native start --resetCache",
     "test": "jest",
     "font": "npx react-native-asset",

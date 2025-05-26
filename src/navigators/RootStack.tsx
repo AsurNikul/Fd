@@ -5,7 +5,6 @@ import {useSelector} from 'react-redux';
 import {getAuth} from '../redux';
 import AuthStack from './AuthStack';
 import Splash from '../screens/Splash';
-import {RootState} from '../redux/store';
 
 const RootStack = () => {
   const isAuthenticated = useSelector(getAuth);
@@ -20,7 +19,7 @@ const RootStack = () => {
       {showSplash ? (
         <Splash />
       ) : (
-        <>{isAuthenticated?.isLoggedIn ? <MainStack /> : <AuthStack />}</>
+        <>{isAuthenticated?.token ? <MainStack /> : <AuthStack />}</>
       )}
     </>
   );

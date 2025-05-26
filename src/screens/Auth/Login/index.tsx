@@ -10,6 +10,7 @@ import {
   Typography,
 } from '../../../components/All';
 import {
+  apiCall,
   loginDetailProps,
   loginSchema,
   loginValues,
@@ -18,6 +19,7 @@ import {
 import {colors, commonStyles} from '../../../theme';
 import {setCredentials} from '../../../redux';
 import {Routes} from '../../../constants';
+import {LOGIN} from '../../../Services/API';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -31,10 +33,13 @@ const Login = () => {
     const data = {
       username: values.username,
       password: values.password,
-      isLoggedIn: true,
     };
     setLoading(true);
-    dispatch(setCredentials(data));
+    await apiCall(LOGIN, 'POST', data)
+      .then(res => {
+        dispatch(setCredentials(res));
+      })
+      .finally(() => setLoading(false));
     setLoading(false);
   };
   const {handleSubmit} = formik;
@@ -54,6 +59,7 @@ const Login = () => {
           placeholder="Enter Username"
           iconName="user"
           iconType="AntDesign"
+          loading={loading}
         />
         <TextField
           formik={formik}
@@ -62,6 +68,7 @@ const Login = () => {
           isPassword
           iconType="Feather"
           iconName="lock"
+          loading={loading}
         />
       </View>
       <Button

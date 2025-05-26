@@ -4,25 +4,21 @@ import Typography from '../../../../components/Typography';
 import styles from './styles';
 import {VectorIcon} from '../../../../components/All';
 import {colors, commonStyles} from '../../../../theme';
-import {addBatchProps} from '../../../../utils/types';
 import moment from 'moment';
-import {
-  navigate,
-  showPopupWithOk,
-  showPopupWithOkAndCancel,
-} from '../../../../utils';
+import {navigate} from '../../../../utils';
 import {Routes} from '../../../../constants';
-import {useDispatch} from 'react-redux';
-import {removeBatch} from '../../../../redux';
+import {useSelector} from 'react-redux';
+import {getAuth} from '../../../../redux';
 
 interface MiniProductsProps {
-  item: addBatchProps;
+  item: any;
+  handleDeleteBatch?: (id?: any) => void;
 }
 const MiniProducts = (props: MiniProductsProps) => {
-  const dispatch = useDispatch();
-  const {item} = props;
-  const inTime = moment(item?.inTime);
-  const outTime = moment(item?.outTime);
+  const {item, handleDeleteBatch} = props;
+  const inTime = moment(item?.in_time);
+  const outTime = moment(item?.out_time);
+  const user = useSelector(getAuth);
 
   const duration = moment.duration(outTime.diff(inTime));
   const hours = Math.floor(duration.asHours());
@@ -31,15 +27,8 @@ const MiniProducts = (props: MiniProductsProps) => {
   const difference = `${hours}:${minutes} Hour`;
 
   const onEditPress = () => navigate(Routes.AddCard, {item});
-  const onDeletePress = () => {
-    showPopupWithOkAndCancel(
-      'Globex Spintex',
-      'Are you sure you want to delete this batch?',
-      () => {
-        dispatch(removeBatch(item));
-      },
-    );
-  };
+  const isAdmin =
+    user?.user?.role === 'administrator' || user?.user?.role === 'manager';
 
   return (
     <View style={styles.cardContainer}>
@@ -51,7 +40,7 @@ const MiniProducts = (props: MiniProductsProps) => {
             color={colors.white}
           />
           <Typography
-            title={`Batch No : ${item?.batchNo}`}
+            title={`Batch No : ${item?.batch_number}`}
             color={colors.white}
             ml={10}
           />
@@ -65,7 +54,7 @@ const MiniProducts = (props: MiniProductsProps) => {
             color={colors.charcoalGrey}
           />
           <Typography
-            title={`${item?.rmKg} KG`}
+            title={`${item?.raw_material} KG`}
             size={15}
             mt={3}
             fontWeight="600"
@@ -107,7 +96,7 @@ const MiniProducts = (props: MiniProductsProps) => {
                 size={15}
               />
               <Typography
-                title={moment(item?.inTime).format('h:mm A')}
+                title={moment(item?.in_time).format('h:mm A')}
                 fontWeight="600"
                 size={13}
                 mt={4}
@@ -123,7 +112,7 @@ const MiniProducts = (props: MiniProductsProps) => {
                 size={15}
               />
               <Typography
-                title={moment(item?.outTime).format('h:mm A')}
+                title={moment(item?.out_time).format('h:mm A')}
                 fontWeight="600"
                 size={13}
                 mt={4}
@@ -132,48 +121,64 @@ const MiniProducts = (props: MiniProductsProps) => {
           </View>
         </View>
         <View style={styles.border} />
-        <View style={[commonStyles.rowCenter, commonStyles.ml5]}>
+        <View
+          style={[
+            commonStyles.rowCenter,
+            commonStyles.ml5,
+            !isAdmin && commonStyles.pb15,
+          ]}>
           <VectorIcon name="calendar" icon="AntDesign" size={16} />
           <Typography
-            title={moment(item?.date).format('DD MMM YYYY')}
+            title={moment(item?.created_at).format('DD MMM YYYY')}
             size={15}
             ml={10}
           />
         </View>
       </View>
-      <View style={styles.fullBorder} />
-      <View style={styles.footerContainer}>
-        <TouchableOpacity
-          style={styles.footerSubContainer}
-          activeOpacity={0.7}
-          onPress={onEditPress}>
-          <VectorIcon
-            name="edit-2"
-            icon="Feather"
-            size={16}
-            color={colors.primary}
-          />
-          <Typography title={'Edit'} size={15} ml={10} color={colors.primary} />
-        </TouchableOpacity>
-        <View style={styles.footerBorder} />
-        <TouchableOpacity
-          style={styles.footerSubContainer}
-          onPress={onDeletePress}>
-          <VectorIcon
-            name="delete"
-            icon="AntDesign"
-            size={16}
-            color={colors.red}
-          />
-          <Typography
-            title={'Delete'}
-            size={15}
-            ml={10}
-            mr={10}
-            color={colors.red}
-          />
-        </TouchableOpacity>
-      </View>
+      {isAdmin && (
+        <>
+          <View style={styles.fullBorder} />
+          <View style={styles.footerContainer}>
+            <TouchableOpacity
+              style={styles.footerSubContainer}
+              activeOpacity={0.7}
+              onPress={onEditPress}>
+              <VectorIcon
+                name="edit-2"
+                icon="Feather"
+                size={16}
+                color={colors.primary}
+                onPress={onEditPress}
+              />
+              <Typography
+                title={'Edit'}
+                size={15}
+                ml={10}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+            <View style={styles.footerBorder} />
+            <TouchableOpacity
+              style={styles.footerSubContainer}
+              onPress={handleDeleteBatch}>
+              <VectorIcon
+                name="delete"
+                icon="AntDesign"
+                size={16}
+                color={colors.red}
+                onPress={handleDeleteBatch}
+              />
+              <Typography
+                title={'Delete'}
+                size={15}
+                ml={10}
+                mr={10}
+                color={colors.red}
+              />
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
     </View>
   );
 };

@@ -1,6 +1,7 @@
 import {Alert, Platform} from 'react-native';
 import axios from 'axios';
 import {showGlobalModal} from '../components/ConfirmModalProvider/CustomModal';
+import store from '../redux/store';
 
 // Check App Platform
 const isIOS: boolean = Platform.OS === 'ios';
@@ -47,18 +48,6 @@ export const showPopupWithOkAndCancel = (
     onCancelClicked: () => cancelClicked && cancelClicked(),
     showCancel: true,
   });
-};
-
-export const callAPI = async (url?: string, method?: string) => {
-  try {
-    const res = await axios({
-      url,
-      method,
-    });
-    return res;
-  } catch (error) {
-    showPopupWithOk('Test', error?.message);
-  }
 };
 
 // // Show Popup with ok and cancel
@@ -238,58 +227,60 @@ export const isError = (name?: string, errors?: any, touched?: any) => {
   const isError = name && errors[name] && touched[name];
   return isError;
 };
-// export const apiCall = async (
-//   url: string,
-//   method: string,
-//   data?: any,
-//   extHeaderData: any,
-//   isFormData: boolean,
-// ) => {
-//   console.log('URL:>', url);
-//   console.log('Method:>', method);
-//   console.log('Body:>', data);
+export const apiCall = async (
+  url: string,
+  method: string,
+  data?: any,
+  extHeaderData?: any,
+  isFormData?: boolean,
+) => {
+  console.log('URL:>', url);
+  console.log('Method:>', method);
+  console.log('Body:>', data);
 
-//   const headers = {
-//     'Content-Type': isFormData ? 'multipart/form-data' : 'application/json',
-//     Accept: 'application/json, text/javascript, */*; q=0.01',
-//     Authorization: global.accessToken,
-//     'Cache-Control': 'no-store',
-//     ...extHeaderData,
-//   };
+  const headers = {
+    'Content-Type': isFormData ? 'multipart/form-data' : 'application/json',
+    Accept: 'application/json, text/javascript, */*; q=0.01',
+    Authorization: `Bearer ${store.getState().main?.cred?.token || ''}`,
+    'Cache-Control': 'no-store',
+    ...extHeaderData,
+  };
+  console.log(headers, 'headers');
 
-//   const config = {
-//     method,
-//     url,
-//     headers,
-//     data: isFormData ? data : data ? JSON.stringify(data) : undefined,
-//   };
+  const config = {
+    method,
+    url,
+    headers,
+    data: isFormData ? data : data ? JSON.stringify(data) : undefined,
+  };
 
-//   try {
-//     const response = await axios(config);
-//     console.log('Status code :>>', {
-//       status: response.status,
-//       token: global.accessToken,
-//     });
-//     console.log('API response :>>>', response.data);
+  try {
+    const response = await axios(config);
+    console.log('Status code :>>', {
+      status: response.status,
+      token: global.accessToken,
+    });
+    console.log('API response :>>>', response.data);
+    console.log(
+      response?.status === 'success',
+      'API response headers :>>>',
+      response?.status,
+    );
 
-//     if (response.status === responseCodes.OK) {
-//       return response.data;
-//     } else if (
-//       response.status === responseCodes.UNAUTHORIZED ||
-//       response.status === responseCodes.TOKEN_EXPIRED
-//     ) {
-//       // await removeToken();
-
-//       return;
-//     } else {
-//       showPopupWithOk('test', response.data?.message || 'SOMETHING_WENT_WRONG');
-//       throw response.data;
-//     }
-//   } catch (error) {
-//     console.error('Error :>>', error);
-//     const errorMessage =
-//       error.response?.data?.message || 'SOMETHING_WENT_WRONG';
-//     showPopupWithOk('Zapllo', errorMessage);
-//     throw error;
-//   }
-// };
+    if (response?.status) {
+      return response.data;
+    } else {
+      showPopupWithOk(
+        'Global Spintex',
+        response.data?.message || 'SOMETHING_WENT_WRONG',
+      );
+      throw response.data;
+    }
+  } catch (error) {
+    console.error('Error :>>', error);
+    const errorMessage =
+      error.response?.data?.message || 'SOMETHING_WENT_WRONG';
+    showPopupWithOk('Global Spintex', errorMessage);
+    throw error;
+  }
+};

@@ -30,34 +30,46 @@ const CustomDrawer = () => {
   const handleAddBatch = () => navigate(Routes.AddCard);
   const handleAddUsers = () => navigate(Routes.REGISTER);
   const handleViewUsers = () => navigate(Routes.Users);
+  const isAdmin =
+    user?.user?.role === 'administrator' || user?.user?.role === 'manager';
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={commonStyles.pl15}>
         <View style={styles.userContainer}>
           <Typography
-            title={`${user?.username}` || 'Test User'}
+            title={`${user?.user?.display_name}` || 'Test User'}
             color={colors.primary}
             mb={5}
             fontWeight="700"
+            size={16}
           />
           <Typography
-            title={`${user?.email || ''}`}
+            title={`${user?.user?.email || ''}`}
             color={colors.primary}
             fontWeight="700"
+            size={14}
           />
         </View>
-        <TouchableOpacity style={styles.drawerItem} onPress={handleViewUsers}>
-          <VectorIcon icon="Feather" name="users" color={colors.primary} />
-          <Typography title={'Users'} color={colors.primary} ml={10} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.drawerItem} onPress={handleAddUsers}>
-          <VectorIcon
-            icon="AntDesign"
-            name="addusergroup"
-            color={colors.primary}
-          />
-          <Typography title={'Add Users'} color={colors.primary} ml={10} />
-        </TouchableOpacity>
+        {isAdmin && (
+          <View>
+            <TouchableOpacity
+              style={styles.drawerItem}
+              onPress={handleViewUsers}>
+              <VectorIcon icon="Feather" name="users" color={colors.primary} />
+              <Typography title={'Users'} color={colors.primary} ml={10} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.drawerItem}
+              onPress={handleAddUsers}>
+              <VectorIcon
+                icon="AntDesign"
+                name="addusergroup"
+                color={colors.primary}
+              />
+              <Typography title={'Add Users'} color={colors.primary} ml={10} />
+            </TouchableOpacity>
+          </View>
+        )}
         <TouchableOpacity style={styles.drawerItem} onPress={handleAddBatch}>
           <VectorIcon icon="AntDesign" name="plus" color={colors.primary} />
           <Typography title={'Add Batch'} color={colors.primary} ml={10} />

@@ -1,5 +1,5 @@
 import {TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from '../../../components/Container';
 import {
   Button,
@@ -8,26 +8,44 @@ import {
   VectorIcon,
 } from '../../../components/All';
 import {useFormik} from 'formik';
-import {addBatchSchema, goBack, isError} from '../../../utils';
+import {
+  addBatchSchema,
+  apiCall,
+  isError,
+  replace,
+  showPopupWithOk,
+} from '../../../utils';
 import {colors, commonStyles} from '../../../theme';
 import {moderateScale} from 'react-native-size-matters';
 import styles from './styles';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
-import {useDispatch} from 'react-redux';
 import {addBatchProps} from '../../../utils/types';
-import {editBatch, setAddBatchData} from '../../../redux/MainSlice';
 import {useRoute} from '@react-navigation/native';
+import {ADD_BATCH} from '../../../Services/API';
+import {Routes} from '../../../constants';
 
 const AddCard = () => {
   const batch = useRoute<any>().params?.item;
-  const dispatch = useDispatch();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [field, setField] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  useEffect(() => {
+    if (batch) {
+      formik.setValues({
+        // date: batch?.date || '',
+        // batchNo: batch?.batchNo || '',
+        rmKg: batch?.raw_material || '',
+        inTime: batch?.in_time || '',
+        outTime: batch?.out_time || '',
+        // sale: batch?.sale || '',
+      });
+    }
+  }, [batch]);
   const formik = useFormik({
     initialValues: {
-      date: batch?.date || '',
-      batchNo: batch?.batchNo || '',
+      // date: batch?.date || '',
+      // batchNo: batch?.batchNo || '',
       rmKg: batch?.rmKg || '',
       inTime: batch?.inTime || '',
       outTime: batch?.outTime || '',
@@ -36,23 +54,28 @@ const AddCard = () => {
     validationSchema: addBatchSchema,
     onSubmit: values => handleAddBatchData(values),
   });
-  const handleAddBatchData = (values: addBatchProps) => {
-    const data: addBatchProps = {
-      date: new Date(values.date),
-      batchNo: values.batchNo,
-      rmKg: values.rmKg,
-      inTime: new Date(values.inTime),
-      outTime: new Date(values.outTime),
+  const handleAddBatchData = async (values: addBatchProps) => {
+    const data = {
+      // date: new Date(values.date),
+      // batchNo: values.batchNo,
+      raw_material: values.rmKg,
+      in_time: moment(values.inTime).format('YYYY-MM-DD HH:mm:ss'),
+      out_time: moment(values.outTime).format('YYYY-MM-DD HH:mm:ss'),
       // sale: values.sale,
     };
-    if (batch?.batchNo) {
-      dispatch(editBatch(data));
-    } else {
-      dispatch(setAddBatchData(data));
-    }
-    console.log(data, 'this is data');
-    formik.resetForm();
-    goBack();
+    setLoading(true);
+    await apiCall(ADD_BATCH, 'POST', data)
+      .then(res => {
+        showPopupWithOk(
+          'Success',
+          res?.message || 'Batch added successfully',
+          () => {
+            formik.resetForm();
+            replace(Routes.DrawerStack);
+          },
+        );
+      })
+      .finally(() => setLoading(false));
   };
 
   const {errors, touched, values} = formik;
@@ -65,11 +88,11 @@ const AddCard = () => {
     setDatePickerVisibility(true);
   };
   const hideDatePicker = () => setDatePickerVisibility(false);
-  const headerTitle = batch?.batchNo ? 'Update Batch' : 'Add Batch';
-  const buttonTitle = batch?.batchNo ? 'Update Batch' : 'Add Batch';
+  const headerTitle = batch?.batch_number ? 'Update Batch' : 'Add Batch';
+  const buttonTitle = batch?.batch_number ? 'Update Batch' : 'Add Batch';
   return (
     <Container title={headerTitle} showLeftIcon isAvoidKeyboard>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.dateContainer}
         onPress={() => showDatePicker('date')}>
         <VectorIcon
@@ -98,7 +121,7 @@ const AddCard = () => {
         iconName="hashtag"
         iconType="Fontisto"
         keyboardType="numeric"
-      />
+      /> */}
       <TextField
         formik={formik}
         name={'rmKg'}
@@ -165,6 +188,7 @@ const AddCard = () => {
         // onPress={() => dispatch(removeBatches([]))}
         width={moderateScale(190)}
         borderRadius={50}
+        loading={loading}
         buttonContainerStyle={commonStyles.mt40}
       />
       <DateTimePickerModal

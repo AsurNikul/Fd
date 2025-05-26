@@ -113,7 +113,8 @@ const Button: FC<ButtonProps> = props => {
         rStyle,
       ]}
       {...props}
-      onPress={handlePress}>
+      onPress={handlePress}
+      disabled={loading}>
       {loading ? (
         <ActivityIndicator size={'small'} color={colors.white} />
       ) : (
