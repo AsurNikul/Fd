@@ -16,3 +16,5 @@ export const ADD_BATCH = BASE_URL + '/wp-json/batchdatamanagement/v1/batches';
 export const DELETE_BATCH =
   BASE_URL + '/wp-json/batchdatamanagement/v1/batches/';
 export const EDIT_BATCH = BASE_URL + '/wp-json/batchdatamanagement/v1/batches/';
+export const FILTERED_BATCH_PDF =
+  BASE_URL + '/wp-json/batchdatamanagement/v1/batches/report/pdf/';

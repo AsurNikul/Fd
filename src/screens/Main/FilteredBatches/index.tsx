@@ -1,4 +1,4 @@
-import {ActivityIndicator, FlatList, View} from 'react-native';
+import {ActivityIndicator, FlatList, Linking, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Container from '../../../components/Container';
 import {useSelector} from 'react-redux';
@@ -9,7 +9,7 @@ import {colors, commonStyles} from '../../../theme';
 import Typography from '../../../components/Typography';
 import {FilterModal, MiniProducts} from '../Home/components';
 import Button from '../../../components/button';
-import {ALL_BATCHES} from '../../../Services/API';
+import {ALL_BATCHES, FILTERED_BATCH_PDF} from '../../../Services/API';
 import moment from 'moment';
 import {apiCall} from '../../../utils';
 import Loader from '../../../components/Loader';
@@ -29,6 +29,7 @@ const FilteredBatches = () => {
     startDate: routeData?.startDate,
     endDate: routeData?.endDate,
   });
+  console.log('🚀 ~ FilteredBatches ~ filterValues:', filterValues);
   const handleOpenFilterModal = () => setShowFilterModal(true);
   let timer: any;
 
@@ -102,6 +103,24 @@ const FilteredBatches = () => {
   };
   const handleCloseFilterModal = () => setShowFilterModal(false);
 
+  const handlePDF = async () => {
+    setLoading(true);
+    await apiCall(
+      `${FILTERED_BATCH_PDF}?from_date=${moment(filterValues.startDate).format(
+        'YYYY-MM-DD',
+      )}&to_date=${moment(filterValues.endDate).format('YYYY-MM-DD')}`,
+      'GET',
+    )
+      .then(res => {
+        console.log(res, 'res');
+        Linking.openURL(res?.pdf_url);
+      })
+      .catch(err => {
+        console.log(err, 'err');
+      })
+      .finally(() => setLoading(false));
+  };
+
   return (
     <Container
       title="Filtered Batches"
@@ -150,7 +169,7 @@ const FilteredBatches = () => {
           )}
         </View>
       )}
-      <Button title="Export" />
+      <Button title="Export" onPress={handlePDF} />
       <FilterModal
         visible={showFilterModal}
         onApplyPress={handleApplyFilter}

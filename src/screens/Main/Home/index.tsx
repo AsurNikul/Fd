@@ -48,10 +48,8 @@ const Home = () => {
     } else {
       setLoading(true);
     }
-    await apiCall(
-      `${ALL_BATCHES}?page=${finalPage}&per_page=5&from_date=${moment().format(
-        'YYYY-MM-DD',
-      )}&&to_date=${moment().format('YYYY-MM-DD')}`,
+    const url = await apiCall(
+      `${ALL_BATCHES}?page=${finalPage}&per_page=5`,
       'GET',
     )
       .then(res => {
