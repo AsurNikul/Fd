@@ -63,10 +63,10 @@ const FilteredBatches = () => {
         setMainData(res);
         if (finalPage === 1) {
           // Replace data for first page
-          setData(res?.batches);
+          setData(res?.data);
         } else {
           // Append data for next pages
-          setData(prevData => [...prevData, ...res?.batches]);
+          setData(prevData => [...prevData, ...res?.data]);
         }
       })
       .catch(() => {
@@ -92,7 +92,11 @@ const FilteredBatches = () => {
   };
   const handleEndReach = async () => {
     const tempPage = page + 1;
-    if (tempPage <= mainData?.total_pages && !loading && !bottomLoading) {
+    if (
+      tempPage <= mainData?.pagination?.total_pages &&
+      !loading &&
+      !bottomLoading
+    ) {
       setPage(prev => prev + 1);
       await getAllBatches(
         tempPage,

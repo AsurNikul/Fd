@@ -1119,7 +1119,7 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - RNDateTimePicker (8.3.0):
+  - RNDateTimePicker (8.4.1):
     - React-Core
   - RNGestureHandler (2.16.0):
     - glog
@@ -1437,7 +1437,7 @@ SPEC CHECKSUMS:
   ReactCommon: 2e5492a3e3a8e72d635c266405e49d12627e5bf0
   RNCAsyncStorage: b6410dead2732b5c72a7fdb1ecb5651bbcf4674b
   RNCMaskedView: 3f3c27b339db863b1fd5f39cc9660484ecfd46ee
-  RNDateTimePicker: 29264364ea7b8cc0fb355b3843cf276a4ff78966
+  RNDateTimePicker: 60f9e986d61e42169a2716c1b51f1f93dfa82665
   RNGestureHandler: e262eeb792addec0705a116456f210ee1be0dcd0
   RNImageCropPicker: b0afedeefd8655254a15c34103718455fde6ce59
   RNReactNativeHapticFeedback: 9d07fb28f9ef1e81440181602954cb3c78d30184
@@ -1448,6 +1448,6 @@ SPEC CHECKSUMS:
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
 
-PODFILE CHECKSUM: e96de6e4b8a9083d88e9cdcaaaacb1b62d0148e5
+PODFILE CHECKSUM: 734c04bc9b91accbe629af8786a32e51a2898c19
 
 COCOAPODS: 1.16.2

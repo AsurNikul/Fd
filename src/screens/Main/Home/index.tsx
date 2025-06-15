@@ -29,6 +29,7 @@ const Home = () => {
   const [filterModal, setFilterModal] = useState(false);
   const [page, setPage] = useState<number>(1);
   const [mainData, setMainData] = useState<any>([]);
+  console.log('🚀 ~ Home ~ mainData:', mainData);
   const [bottomLoading, setBottomLoading] = useState(false);
   let timer: any;
 
@@ -42,6 +43,7 @@ const Home = () => {
   }, []);
 
   const getAllBatches = async (tempPage?: number) => {
+    console.log('🚀 ~ getAllBatches ~ tempPage:', tempPage);
     const finalPage = tempPage ? tempPage : page;
     if (finalPage > 1) {
       setBottomLoading(true);
@@ -56,10 +58,10 @@ const Home = () => {
         setMainData(res);
         if (finalPage === 1) {
           // Replace data for first page
-          setData(res?.batches);
+          setData(res?.data);
         } else {
           // Append data for next pages
-          setData(prevData => [...prevData, ...res?.batches]);
+          setData(prevData => [...prevData, ...res?.data]);
         }
       })
       .finally(() => {
@@ -82,7 +84,11 @@ const Home = () => {
   };
   const handleEndReach = async () => {
     const tempPage = page + 1;
-    if (tempPage <= mainData?.total_pages && !loading && !bottomLoading) {
+    if (
+      tempPage <= mainData?.pagination?.total_pages &&
+      !loading &&
+      !bottomLoading
+    ) {
       setPage(prev => prev + 1);
       await getAllBatches(tempPage);
     }

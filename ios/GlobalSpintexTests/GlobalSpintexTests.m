@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface foldTests : XCTestCase
+@interface GlobalSpintexTests : XCTestCase
 
 @end
 
-@implementation foldTests
+@implementation GlobalSpintexTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

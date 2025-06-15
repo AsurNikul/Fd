@@ -68,7 +68,7 @@ const FilterModal: FC<FilterModalProps> = props => {
               <Typography
                 title={
                   startDate
-                    ? moment(startDate).format('DD MMM YYY')
+                    ? moment(startDate).format('DD/MM/YYYY')
                     : 'Start Date'
                 }
                 ml={10}
@@ -87,7 +87,7 @@ const FilterModal: FC<FilterModalProps> = props => {
               />
               <Typography
                 title={
-                  endDate ? moment(endDate).format('DD MMM YYYY') : 'End Date'
+                  endDate ? moment(endDate).format('DD/MM/YYYY') : 'End Date'
                 }
                 ml={10}
                 size={16}
