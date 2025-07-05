@@ -9,13 +9,24 @@ import {colors, commonStyles} from '../../../theme';
 import Typography from '../../../components/Typography';
 import {FilterModal, MiniProducts} from '../Home/components';
 import Button from '../../../components/button';
-import {ALL_BATCHES, FILTERED_BATCH_PDF} from '../../../Services/API';
+import {
+  ALL_BATCHES,
+  DELETE_BATCH,
+  FILTERED_BATCH_PDF,
+  SALES,
+} from '../../../Services/API';
 import moment from 'moment';
-import {apiCall} from '../../../utils';
+import {
+  apiCall,
+  showPopupWithOk,
+  showPopupWithOkAndCancel,
+} from '../../../utils';
 import Loader from '../../../components/Loader';
+import MiniSales from '../sales/components/MiniSales';
 
 const FilteredBatches = () => {
   const routeData = useRoute<any>().params?.data;
+  const isSales = useRoute<any>().params?.isSales;
   const allBatches = useSelector(getBatchData);
   const focus = useIsFocused();
   const [data, setData] = useState<any>([]);
@@ -29,7 +40,6 @@ const FilteredBatches = () => {
     startDate: routeData?.startDate,
     endDate: routeData?.endDate,
   });
-  console.log('🚀 ~ FilteredBatches ~ filterValues:', filterValues);
   const handleOpenFilterModal = () => setShowFilterModal(true);
   let timer: any;
 
@@ -53,10 +63,11 @@ const FilteredBatches = () => {
     } else {
       setLoading(true);
     }
+    const url = isSales ? SALES : ALL_BATCHES;
     await apiCall(
-      `${ALL_BATCHES}?page=${finalPage}&per_page=5&from_date=${moment(
-        startDate,
-      ).format('YYYY-MM-DD')}&to_date=${moment(endDate).format('YYYY-MM-DD')}`,
+      `${url}?page=${finalPage}&per_page=5&from_date=${moment(startDate).format(
+        'YYYY-MM-DD',
+      )}&to_date=${moment(endDate).format('YYYY-MM-DD')}`,
       'GET',
     )
       .then(res => {
@@ -124,10 +135,57 @@ const FilteredBatches = () => {
       })
       .finally(() => setLoading(false));
   };
+  const onDeletePress = (id?: any) => {
+    showPopupWithOkAndCancel(
+      'Globex Spintex',
+      `Are you sure you want to delete this ${
+        isSales ? 'Sales record' : 'batch'
+      }?`,
+      () => handleDeleteBatch(id),
+    );
+  };
+  const handleDeleteBatch = async (id?: any) => {
+    setLoading(true);
+    const url = isSales ? `${SALES}/${id}` : `${DELETE_BATCH}${id}`;
+    apiCall(url, 'DELETE')
+      .then(async res => {
+        showPopupWithOk(
+          'Success',
+          'Sales Record deleted successfully',
+          () => {},
+        );
+        setPage(1);
+        timer = setTimeout(async () => {
+          await getAllBatches(
+            1,
+            filterValues?.startDate,
+            filterValues?.endDate,
+          );
+        }, 300);
+      })
+      .finally(() => setLoading(false));
+  };
+  const renderItem = ({item}) => {
+    if (isSales) {
+      return (
+        <MiniSales
+          item={item}
+          handleDeleteBatch={() => onDeletePress(item?.id)}
+        />
+      );
+    } else {
+      return (
+        <MiniProducts
+          item={item}
+          handleDeleteBatch={() => onDeletePress(item?.id)}
+        />
+      );
+    }
+  };
 
   return (
     <Container
-      title="Filtered Batches"
+      title={isSales ? 'Filtered Sales' : 'Filtered Batches'}
       showLeftIcon
       rightIcon={Images.filter}
       onRightPress={handleOpenFilterModal}>
@@ -158,7 +216,7 @@ const FilteredBatches = () => {
                 />
               ) : null;
             }}
-            renderItem={({item}) => <MiniProducts item={item} />}
+            renderItem={renderItem}
           />
         </View>
       ) : (
@@ -173,7 +231,7 @@ const FilteredBatches = () => {
           )}
         </View>
       )}
-      <Button title="Export" onPress={handlePDF} />
+      {!isSales && <Button title="Export" onPress={handlePDF} />}
       <FilterModal
         visible={showFilterModal}
         onApplyPress={handleApplyFilter}

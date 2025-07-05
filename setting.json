@@ -1,81 +1,40 @@
 {
-  // Enable / Disable the spell checker.
   "cSpell.enabled": true,
 
-  // Specifies the style of the gravatar default (fallback) images
-  //  - identicon: A geometric pattern
-  //  - mp: A simple, cartoon-style silhouetted outline of a person (does not vary by email hash)
-  //  - monsterid: A monster with different colors, faces, etc
-  //  - retro: 8-bit arcade-style pixelated faces
-  //  - robohash: A robot with different colors, faces, etc
-  //  - wavatar: A face with differing features and backgrounds
   "gitlens.defaultGravatarsStyle": "robohash",
 
-  // Deprecated. Use the pre-release of GitLens instead
-  //
   "gitlens.insiders": null,
 
-  // Specifies how much (if any) output will be sent to the GitLens output channel
-  //  - off: Logs nothing
-  //  - error: Logs only errors
-  //  - warn: Logs errors and warnings
-  //  - info: Logs errors, warnings, and messages
-  //  - debug: Logs verbose errors, warnings, and messages. Best for issue reporting.
   "gitlens.outputLevel": "warn",
 
-  // Specifies whether to hide or show features that require a trial or GitLens Pro and are not accessible given the opened repositories and current trial or plan
   "gitlens.plusFeatures.enabled": true,
 
-  // Specifies the proxy configuration to use. If not specified, the proxy configuration will be determined based on VS Code or OS settings
   "gitlens.proxy": null,
 
-  // Specifies whether to show the What's New notification after upgrading to new feature releases
   "gitlens.showWhatsNewAfterUpgrades": true,
 
-  // Specifies whether to enable virtual repositories support
   "gitlens.virtualRepositories.enabled": true,
 
-  // Enable to activate POWER MODE!!!
   "powermode.enabled": false,
 
-  // Choose between different preset gifs to use when powermode is activated
-  "powermode.presets": "particles",
+  "powermode.presets": "flames",
 
-  // (**PRO feature**) Allow `console.log` to trigger predictions
-  //
-  //  _(Always disabled for Community edition)_
   "console-ninja.allowConsoleLogToTriggerPredictions": false,
 
-  // The list of host names that may connect to Console Ninja. Defaults to the current machine IP addresses and host name (`localhost`, `127.0.0.1`, `example.cypress.io`, `os.hostname()`, Network Adapter IP v4 Addresses).
-  //
-  // (**PRO feature**) also supports the use of `*` and `?` for wildcard matching (e.g. `*.example.com`), and regular expressions (e.g. `/^.*\\.example\\.com$/`).
-  //
-  // Add additional host names if you need to connect to Console Ninja from a different/custom host name **(restart editor after changing this setting)**.
   "console-ninja.allowedHosts": [],
 
-  // Choose whether to use Pro or Community feature set.
-  //  - Pro: Use all Console Ninja features
-  //  - Community: Only use Console Ninja features that will be available in the free Community Edition
   "console-ninja.featureSet": "Pro",
 
-  // Install [bin](https://github.com/wallabyjs/console-ninja#universal-node-applications) folder to PATH.
   "console-ninja.installBinToPath": true,
 
-  // (**PRO feature**) Enable Predictive Logging
-  //
-  //  _(Always disabled for Community edition)_
   "console-ninja.predictiveLoggingEnabled": true,
 
-  // (**PRO feature**) Template of web search URL. Use `{query}` placeholder to specify where to put the search query.
   "console-ninja.searchUrl": "https://www.google.com/search?q={query}",
 
-  // Display information about new features when they are released.
   "console-ninja.showWhatsNew": true,
 
-  // Synchronize subscription details and other settings as a part of VS Code Settings Sync
   "console-ninja.syncSettings": true,
 
-  // Tools (node modules and extensions) to automatically enable Console Ninja for.
   "console-ninja.toolsToEnableSupportAutomaticallyFor": {
     "vite": true,
     "angular": true,
@@ -97,23 +56,12 @@
     "live-preview-extension": false
   },
 
-  // Warn when no supported tools are detected.
   "console-ninja.warnOnNoToolsDetected": true,
 
-  // Control whether the combo counter is visible.
-  //  - show: Show the combo counter
-  //  - hide: Hide the combo counter
-  //  - default: Use the default value. May be overridden by other settings.
   "powermode.combo.counterEnabled": "default",
 
-  // Control the size of the Combo Meter text
   "powermode.combo.counterSize": 3,
 
-  // Control where all the combo information is visible.
-  //  - editor: Show the combo in the editor. The true 'Power Mode' experience
-  //  - statusbar: Use the status bar. A more subdued experience.
-  //  - default: Use the default value. May be overiddent by other settings.
-  //  - off: Turn off the combo entirely.
   "powermode.combo.location": "default",
 
   // The combo number needed to activate POWER MODE!!! and start shaking and exploding the screen! If the value is 0, POWER MODE will always be active.

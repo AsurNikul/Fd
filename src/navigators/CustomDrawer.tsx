@@ -12,6 +12,7 @@ import {Routes} from '../constants';
 const CustomDrawer = () => {
   const dispatch = useDispatch();
   const user = useSelector(getAuth);
+  console.log('🚀 ~ CustomDrawer ~ user:', user);
   const handleLogout = () => {
     const data = {
       email: '',
@@ -30,6 +31,8 @@ const CustomDrawer = () => {
   const handleAddBatch = () => navigate(Routes.AddCard);
   const handleAddUsers = () => navigate(Routes.REGISTER);
   const handleViewUsers = () => navigate(Routes.Users);
+  const handleViewSales = () => navigate(Routes.Sales);
+  const handleAddSales = () => navigate(Routes.AddSales);
   const isAdmin =
     user?.user?.role === 'administrator' || user?.user?.role === 'manager';
   return (
@@ -74,6 +77,22 @@ const CustomDrawer = () => {
           <VectorIcon icon="AntDesign" name="plus" color={colors.primary} />
           <Typography title={'Add Batch'} color={colors.primary} ml={10} />
         </TouchableOpacity>
+        {isAdmin && (
+          <>
+            <TouchableOpacity
+              style={styles.drawerItem}
+              onPress={handleAddSales}>
+              <VectorIcon icon="AntDesign" name="plus" color={colors.primary} />
+              <Typography title={'Add Sales'} color={colors.primary} ml={10} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.drawerItem}
+              onPress={handleViewSales}>
+              <VectorIcon icon="AntDesign" name="tags" color={colors.primary} />
+              <Typography title={'View Sales'} color={colors.primary} ml={10} />
+            </TouchableOpacity>
+          </>
+        )}
         <TouchableOpacity style={styles.drawerItem} onPress={handleLogout}>
           <VectorIcon
             icon="MaterialIcons"

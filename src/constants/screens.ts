@@ -6,6 +6,8 @@ import AddCard from '../screens/Main/AddCard';
 import FilteredBatches from '../screens/Main/FilteredBatches';
 import DrawerStack from '../navigators/DrawerStack';
 import Users from '../screens/Main/users';
+import Sales from '../screens/Main/sales';
+import AddSales from '../screens/Main/AddSales';
 export const Screens = {
   Home: Home,
   ViewCart: ViewCart,
@@ -15,4 +17,6 @@ export const Screens = {
   FilteredBatches,
   DrawerStack,
   Users,
+  Sales,
+  AddSales,
 };

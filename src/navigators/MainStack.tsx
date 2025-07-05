@@ -29,6 +29,9 @@ const MainStack = () => {
         <Stack.Screen name={SCREENS.Users} component={Screens.Users} />
         <Stack.Screen name={SCREENS.REGISTER} component={Screens.Register} />
         <Stack.Screen name={SCREENS.ViewCart} component={Screens.ViewCart} />
+        <Stack.Screen name={SCREENS.Sales} component={Screens.Sales} />
+        <Stack.Screen name={SCREENS.AddSales} component={Screens.AddSales} />
+
         <Stack.Screen
           name={SCREENS.FilteredBatches}
           component={Screens.FilteredBatches}

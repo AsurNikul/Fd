@@ -45,7 +45,7 @@ export const editUserSchema = Yup.object().shape({
 });
 
 export const addBatchSchema = Yup.object().shape({
-  // date: Yup.date().required('Date is required'),
+  date: Yup.date().required('Date is required'),
   // batchNo: Yup.string().required('Batch number is required'),
   rmKg: Yup.number()
     .typeError('RM (KG) must be a number')
@@ -63,6 +63,19 @@ export const addBatchSchema = Yup.object().shape({
         return new Date(value) > new Date(inTime);
       },
     ),
+  // sale: Yup.number()
+  //   .typeError('Sale must be a number')
+  //   .min(0, 'Sale cannot be negative')
+  //   .required('Sale is required'),
+});
+
+export const addSalesSchema = Yup.object().shape({
+  date: Yup.date().required('Date is required'),
+  // batchNo: Yup.string().required('Batch number is required'),
+  rmKg: Yup.number()
+    .typeError('RM (KG) must be a number')
+    .positive('Must be greater than 0')
+    .required('RM (KG) is required'),
   // sale: Yup.number()
   //   .typeError('Sale must be a number')
   //   .min(0, 'Sale cannot be negative')

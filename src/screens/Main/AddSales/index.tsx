@@ -20,24 +20,24 @@ import {moderateScale} from 'react-native-size-matters';
 import styles from './styles';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
-import {addBatchProps} from '../../../utils/types';
+import {addBatchProps, addSalesProps} from '../../../utils/types';
 import {useRoute} from '@react-navigation/native';
-import {ADD_BATCH} from '../../../Services/API';
+import {ADD_BATCH, SALES} from '../../../Services/API';
 import {Routes} from '../../../constants';
+import {addSalesSchema} from '../../../utils/schema';
 
-const AddCard = () => {
+const AddSales = () => {
   const batch = useRoute<any>().params?.item;
+  console.log('🚀 ~ AddSales ~ batch:', batch);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [field, setField] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     if (batch) {
       formik.setValues({
-        date: batch?.date || '',
+        date: batch?.sales_date || '',
         // batchNo: batch?.batchNo || '',
         rmKg: batch?.raw_material || '',
-        inTime: batch?.in_time || '',
-        outTime: batch?.out_time || '',
         // sale: batch?.sale || '',
       });
     }
@@ -45,33 +45,31 @@ const AddCard = () => {
   const formik = useFormik({
     initialValues: {
       date: batch?.date || '',
-      // batchNo: batch?.batchNo || '',
       rmKg: batch?.rmKg || '',
-      inTime: batch?.inTime || '',
-      outTime: batch?.outTime || '',
-      // sale: batch?.sale || '',
     },
-    validationSchema: addBatchSchema,
+    validationSchema: addSalesSchema,
     onSubmit: values => handleAddBatchData(values),
   });
-  const handleAddBatchData = async (values: addBatchProps) => {
+  const handleAddBatchData = async (values: addSalesProps) => {
+    console.log('🚀 ~ handleAddBatchData ~ values:', values);
     const data = {
-      date: moment(values.date).format('YYYY-MM-DD HH:mm:ss'),
+      sales_date: moment(values.date).format('YYYY-MM-DD HH:mm:ss'),
       // batchNo: values.batchNo,
       raw_material: values.rmKg,
-      in_time: moment(values.inTime).format('YYYY-MM-DD HH:mm:ss'),
-      out_time: moment(values.outTime).format('YYYY-MM-DD HH:mm:ss'),
       // sale: values.sale,
     };
+    console.log(data, 'data');
     setLoading(true);
-    await apiCall(ADD_BATCH, 'POST', data)
+    const url = batch?.id ? `${SALES}/${batch?.id}` : SALES;
+    const method = batch?.id ? 'PUT' : 'POST';
+    await apiCall(url, method, data)
       .then(res => {
         showPopupWithOk(
           'Success',
-          res?.message || 'Batch added successfully',
+          res?.message || 'Sales added successfully',
           () => {
             formik.resetForm();
-            replace(Routes.DrawerStack);
+            replace(Routes.Sales);
           },
         );
       })
@@ -88,8 +86,8 @@ const AddCard = () => {
     setDatePickerVisibility(true);
   };
   const hideDatePicker = () => setDatePickerVisibility(false);
-  const headerTitle = batch?.batch_number ? 'Update Batch' : 'Add Batch';
-  const buttonTitle = batch?.batch_number ? 'Update Batch' : 'Add Batch';
+  const headerTitle = batch?.id ? 'Update Sales' : 'Add Sales';
+  const buttonTitle = batch?.id ? 'Update Sales' : 'Add Sales';
   return (
     <Container title={headerTitle} showLeftIcon isAvoidKeyboard>
       <TouchableOpacity
@@ -130,50 +128,7 @@ const AddCard = () => {
         iconType="MaterialCommunityIcons"
         keyboardType="numeric"
       />
-      <TouchableOpacity
-        style={styles.dateContainer}
-        onPress={() => showDatePicker('inTime')}>
-        <VectorIcon
-          name="time"
-          icon="Ionicons"
-          size={20}
-          color={colors.primary}
-        />
-        <Typography
-          title={
-            values.inTime
-              ? moment(values.inTime).format('HH:mm')
-              : 'Select In Time'
-          }
-          ml={10}
-          size={14}
-        />
-      </TouchableOpacity>
-      {isError('inTime', errors, touched) && (
-        <Typography title={errors.inTime} txtStyle={commonStyles.error} />
-      )}
-      <TouchableOpacity
-        style={styles.dateContainer}
-        onPress={() => showDatePicker('outTime')}>
-        <VectorIcon
-          name="time"
-          icon="Ionicons"
-          size={20}
-          color={colors.primary}
-        />
-        <Typography
-          title={
-            values.outTime
-              ? moment(values.outTime).format('HH:mm')
-              : 'Select Out Time'
-          }
-          ml={10}
-          size={14}
-        />
-      </TouchableOpacity>
-      {isError('outTime', errors, touched) && (
-        <Typography title={errors.outTime} txtStyle={commonStyles.error} />
-      )}
+
       {/* <TextField
         formik={formik}
         name={'sale'}
@@ -202,4 +157,4 @@ const AddCard = () => {
   );
 };
 
-export default AddCard;
+export default AddSales;

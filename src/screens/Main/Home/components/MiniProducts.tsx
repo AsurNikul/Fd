@@ -129,7 +129,7 @@ const MiniProducts = (props: MiniProductsProps) => {
           ]}>
           <VectorIcon name="calendar" icon="AntDesign" size={16} />
           <Typography
-            title={moment(item?.created_at).format('DD MMM YYYY')}
+            title={moment(item?.out_time).format('DD MMM YYYY')}
             size={15}
             ml={10}
           />
