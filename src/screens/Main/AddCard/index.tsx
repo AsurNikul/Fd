@@ -33,7 +33,7 @@ const AddCard = () => {
   useEffect(() => {
     if (batch) {
       formik.setValues({
-        // date: batch?.date || '',
+        date: batch?.date || '',
         // batchNo: batch?.batchNo || '',
         rmKg: batch?.raw_material || '',
         inTime: batch?.in_time || '',
@@ -44,7 +44,7 @@ const AddCard = () => {
   }, [batch]);
   const formik = useFormik({
     initialValues: {
-      // date: batch?.date || '',
+      date: batch?.date || '',
       // batchNo: batch?.batchNo || '',
       rmKg: batch?.rmKg || '',
       inTime: batch?.inTime || '',
@@ -56,7 +56,7 @@ const AddCard = () => {
   });
   const handleAddBatchData = async (values: addBatchProps) => {
     const data = {
-      // date: new Date(values.date),
+      date: moment(values.date, 'DD/MM/YYY').toISOString(),
       // batchNo: values.batchNo,
       raw_material: values.rmKg,
       in_time: moment(values.inTime).format('YYYY-MM-DD HH:mm:ss'),
@@ -92,7 +92,7 @@ const AddCard = () => {
   const buttonTitle = batch?.batch_number ? 'Update Batch' : 'Add Batch';
   return (
     <Container title={headerTitle} showLeftIcon isAvoidKeyboard>
-      {/* <TouchableOpacity
+      <TouchableOpacity
         style={styles.dateContainer}
         onPress={() => showDatePicker('date')}>
         <VectorIcon
@@ -114,7 +114,7 @@ const AddCard = () => {
       {isError('date', errors, touched) && (
         <Typography title={errors.date} txtStyle={commonStyles.error} />
       )}
-      <TextField
+      {/* <TextField
         formik={formik}
         name={'batchNo'}
         placeholder="Enter Batch Number"
@@ -196,6 +196,7 @@ const AddCard = () => {
         mode={field === 'date' ? 'date' : 'time'}
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
+        date={values?.date ? new Date(values?.date) : new Date()}
       />
     </Container>
   );

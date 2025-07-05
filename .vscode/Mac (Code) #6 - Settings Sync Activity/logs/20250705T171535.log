@@ -1,0 +1,432 @@
+2025-07-05 17:15:38.143 [info] Using settings sync service https://vscode-sync.trafficmanager.net/
+2025-07-05 17:15:38.146 [info] Auto Sync is enabled.
+2025-07-05 17:15:38.146 [info] Auto Sync: Suspended until auth token is available.
+2025-07-05 17:15:40.435 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/extensions
+2025-07-05 17:15:40.519 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/globalState
+2025-07-05 17:15:40.596 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/keybindings
+2025-07-05 17:15:40.679 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/profiles
+2025-07-05 17:15:40.759 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/settings
+2025-07-05 17:15:40.876 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/snippets
+2025-07-05 17:15:40.925 [info] Deleting non existing profile from backup /Users/solankinikul/Library/Application Support/Code/User/sync/tasks
+2025-07-05 17:15:41.334 [info] Auto Sync: Triggered by Interval
+2025-07-05 17:15:41.334 [info] Sync started.
+2025-07-05 17:15:42.436 [info] Settings: Last sync resource does not exist locally.
+2025-07-05 17:15:44.020 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:15:44.022 [info] Keybindings: Last sync resource does not exist locally.
+2025-07-05 17:15:44.315 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:15:44.321 [info] Snippets: Last sync resource does not exist locally.
+2025-07-05 17:15:44.660 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:15:44.661 [info] Tasks: Last sync resource does not exist locally.
+2025-07-05 17:15:44.784 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:15:44.785 [info] GlobalState: Last sync resource does not exist locally.
+2025-07-05 17:15:47.091 [info] GlobalState: Updated global state ["workbench.activity.pinnedViewlets2","workbench.activityBar.location","colorThemeData","snippets.usageTimestamps","views.customizations"]
+2025-07-05 17:15:47.091 [info] GlobalState: Updated local ui state
+2025-07-05 17:15:48.993 [info] GlobalState: Updated remote ui state. Updated: csharp.1.lastSessionDate.
+2025-07-05 17:15:48.999 [info] GlobalState: Updated last synchronized ui state
+2025-07-05 17:15:49.001 [info] Extensions: Last sync resource does not exist locally.
+2025-07-05 17:15:49.127 [info] Extensions: Last sync resource does not exist locally.
+2025-07-05 17:15:51.428 [info] Extensions: Uninstalled local extension. equinusocio.vsc-material-theme
+2025-07-05 17:15:51.481 [info] Extensions: Uninstalled local extension. equinusocio.vsc-material-theme-icons
+2025-07-05 17:15:53.975 [info] Extensions: Installed extension. codeium.codeium 1.49.2
+2025-07-05 17:15:53.984 [info] Extensions: Updated last synchronized extensions. Skipped: ["ms-azuretools.vscode-containers","docker.docker","anthropic.claude-code"].
+2025-07-05 17:15:53.987 [info] Profiles: Last sync resource does not exist locally.
+2025-07-05 17:15:54.107 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:15:54.108 [info] Syncing profile. Nik
+2025-07-05 17:15:54.114 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:15:54.119 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:15:54.121 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:15:54.124 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:15:54.147 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:15:54.176 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:15:54.177 [info] Sync done. Took 12843ms
+2025-07-05 17:15:54.177 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:15:54.177 [info] Sync started.
+2025-07-05 17:15:54.623 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:15:54.628 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:15:54.637 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:15:54.639 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:15:54.642 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:15:54.716 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:15:54.717 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:15:54.717 [info] Syncing profile. Nik
+2025-07-05 17:15:54.718 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:15:54.719 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:15:54.720 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:15:54.721 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:15:54.723 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:15:54.749 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:15:54.749 [info] Sync done. Took 572ms
+2025-07-05 17:15:54.750 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:15:54.750 [info] Sync started.
+2025-07-05 17:15:55.123 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:15:55.127 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:15:55.130 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:15:55.131 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:15:55.134 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:15:55.206 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:15:55.207 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:15:55.207 [info] Syncing profile. Nik
+2025-07-05 17:15:55.208 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:15:55.209 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:15:55.210 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:15:55.211 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:15:55.213 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:15:55.241 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:15:55.241 [info] Sync done. Took 490ms
+2025-07-05 17:16:18.634 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:16:18.634 [info] Sync started.
+2025-07-05 17:16:19.149 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:16:19.151 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:16:19.160 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:16:19.162 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:16:19.166 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:16:19.335 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:16:19.337 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:16:19.338 [info] Syncing profile. Nik
+2025-07-05 17:16:19.340 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:16:19.342 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:16:19.347 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:16:19.354 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:16:19.359 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:16:19.412 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:16:19.413 [info] Sync done. Took 781ms
+2025-07-05 17:16:55.163 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:16:55.165 [info] Sync started.
+2025-07-05 17:16:56.455 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:16:56.469 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:16:56.486 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:16:56.515 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:16:56.545 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:16:56.954 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:16:56.962 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:16:56.964 [info] Syncing profile. Nik
+2025-07-05 17:16:56.972 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:16:56.978 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:16:56.987 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:16:56.993 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:16:57.001 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:16:57.071 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:16:57.072 [info] Sync done. Took 1916ms
+2025-07-05 17:18:11.000 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:18:11.001 [info] Sync started.
+2025-07-05 17:18:13.766 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:18:13.821 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:18:13.836 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:18:13.840 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:18:13.850 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:18:14.416 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:18:14.429 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:18:14.432 [info] Syncing profile. Nik
+2025-07-05 17:18:14.442 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:18:14.444 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:18:14.446 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:18:14.449 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:18:14.459 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:18:14.675 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:18:14.679 [info] Sync done. Took 3719ms
+2025-07-05 17:18:39.020 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:18:39.020 [info] Sync started.
+2025-07-05 17:18:39.648 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:18:39.650 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:18:39.658 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:18:39.659 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:18:39.670 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:18:39.831 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:18:39.833 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:18:39.834 [info] Syncing profile. Nik
+2025-07-05 17:18:39.836 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:18:39.839 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:18:39.841 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:18:39.844 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:18:39.851 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:18:39.892 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:18:39.893 [info] Sync done. Took 874ms
+2025-07-05 17:19:27.834 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:19:27.835 [info] Sync started.
+2025-07-05 17:19:28.526 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:19:28.529 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:19:28.536 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:19:28.542 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:19:28.551 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:19:28.701 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:19:28.703 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:19:28.704 [info] Syncing profile. Nik
+2025-07-05 17:19:28.708 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:19:28.711 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:19:28.713 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:19:28.714 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:19:28.721 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:19:28.794 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:19:28.794 [info] Sync done. Took 961ms
+2025-07-05 17:19:45.937 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:19:45.938 [info] Sync started.
+2025-07-05 17:19:47.414 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:19:47.420 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:19:47.492 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:19:47.499 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:19:47.510 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:19:47.933 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:19:47.937 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:19:47.939 [info] Syncing profile. Nik
+2025-07-05 17:19:47.941 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:19:47.948 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:19:47.952 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:19:47.955 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:19:47.996 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:19:48.115 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:19:48.123 [info] Sync done. Took 2184ms
+2025-07-05 17:22:20.588 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:22:20.589 [info] Sync started.
+2025-07-05 17:22:21.437 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:22:21.439 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:22:21.451 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:22:21.454 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:22:21.466 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:22:21.618 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:22:21.619 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:22:21.619 [info] Syncing profile. Nik
+2025-07-05 17:22:21.621 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:22:21.623 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:22:21.624 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:22:21.627 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:22:21.632 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:22:21.710 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:22:21.710 [info] Sync done. Took 1123ms
+2025-07-05 17:22:53.706 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:22:53.707 [info] Sync started.
+2025-07-05 17:22:54.161 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:22:54.163 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:22:54.168 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:22:54.169 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:22:54.173 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:22:54.275 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:22:54.276 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:22:54.277 [info] Syncing profile. Nik
+2025-07-05 17:22:54.278 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:22:54.280 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:22:54.281 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:22:54.282 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:22:54.285 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:22:54.311 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:22:54.312 [info] Sync done. Took 607ms
+2025-07-05 17:23:10.445 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:23:10.446 [info] Sync started.
+2025-07-05 17:23:10.898 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:23:10.900 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:23:10.906 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:23:10.907 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:23:10.910 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:23:10.992 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:23:10.993 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:23:10.994 [info] Syncing profile. Nik
+2025-07-05 17:23:10.995 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:23:10.998 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:23:10.999 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:23:11.000 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:23:11.002 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:23:11.029 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:23:11.029 [info] Sync done. Took 585ms
+2025-07-05 17:23:39.257 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:23:39.258 [info] Sync started.
+2025-07-05 17:23:39.764 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:23:39.766 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:23:39.770 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:23:39.772 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:23:39.775 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:23:39.848 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:23:39.849 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:23:39.849 [info] Syncing profile. Nik
+2025-07-05 17:23:39.850 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:23:39.852 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:23:39.853 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:23:39.854 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:23:39.856 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:23:39.882 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:23:39.882 [info] Sync done. Took 626ms
+2025-07-05 17:23:57.889 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:23:57.889 [info] Sync started.
+2025-07-05 17:23:58.420 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:23:58.427 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:23:58.439 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:23:58.441 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:23:58.446 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:23:58.576 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:23:58.577 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:23:58.577 [info] Syncing profile. Nik
+2025-07-05 17:23:58.579 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:23:58.580 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:23:58.581 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:23:58.583 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:23:58.585 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:23:58.622 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:23:58.623 [info] Sync done. Took 735ms
+2025-07-05 17:24:34.813 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:24:34.813 [info] Sync started.
+2025-07-05 17:24:35.315 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:24:35.318 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:24:35.323 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:24:35.325 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:24:35.329 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:24:35.423 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:24:35.424 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:24:35.425 [info] Syncing profile. Nik
+2025-07-05 17:24:35.427 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:24:35.428 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:24:35.429 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:24:35.430 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:24:35.432 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:24:35.459 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:24:35.459 [info] Sync done. Took 648ms
+2025-07-05 17:24:50.556 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:24:50.557 [info] Sync started.
+2025-07-05 17:24:51.024 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:24:51.026 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:24:51.031 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:24:51.032 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:24:51.036 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:24:51.104 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:24:51.105 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:24:51.105 [info] Syncing profile. Nik
+2025-07-05 17:24:51.107 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:24:51.109 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:24:51.110 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:24:51.111 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:24:51.113 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:24:51.138 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:24:51.138 [info] Sync done. Took 586ms
+2025-07-05 17:26:05.340 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:26:05.341 [info] Sync started.
+2025-07-05 17:26:05.942 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:26:05.948 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:26:05.954 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:26:05.956 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:26:05.967 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:26:06.076 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:26:06.078 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:26:06.078 [info] Syncing profile. Nik
+2025-07-05 17:26:06.079 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:26:06.082 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:26:06.083 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:26:06.084 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:26:06.086 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:26:06.115 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:26:06.116 [info] Sync done. Took 777ms
+2025-07-05 17:27:41.673 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:27:41.680 [info] Sync started.
+2025-07-05 17:27:42.159 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:27:42.161 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:27:42.166 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:27:42.167 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:27:42.170 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:27:42.264 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:27:42.264 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:27:42.265 [info] Syncing profile. Nik
+2025-07-05 17:27:42.266 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:27:42.267 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:27:42.271 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:27:42.272 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:27:42.276 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:27:42.302 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:27:42.303 [info] Sync done. Took 637ms
+2025-07-05 17:32:42.329 [info] Auto Sync: Triggered by Interval
+2025-07-05 17:32:42.331 [info] Sync started.
+2025-07-05 17:32:43.064 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:32:43.068 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:32:43.075 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:32:43.085 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:32:43.090 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:32:43.199 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:32:43.200 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:32:43.200 [info] Syncing profile. Nik
+2025-07-05 17:32:43.202 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:32:43.203 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:32:43.204 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:32:43.205 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:32:43.207 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:32:43.233 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:32:43.234 [info] Sync done. Took 906ms
+2025-07-05 17:37:40.735 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:37:40.738 [info] Sync started.
+2025-07-05 17:37:41.414 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:37:41.418 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:37:41.423 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:37:41.424 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:37:41.428 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:37:41.522 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:37:41.523 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:37:41.524 [info] Syncing profile. Nik
+2025-07-05 17:37:41.525 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:37:41.526 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:37:41.527 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:37:41.529 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:37:41.531 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:37:41.558 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:37:41.559 [info] Sync done. Took 826ms
+2025-07-05 17:38:07.213 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:38:07.214 [info] Sync started.
+2025-07-05 17:38:07.670 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:38:07.671 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:38:07.675 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:38:07.676 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:38:07.680 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:38:07.748 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:38:07.749 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:38:07.749 [info] Syncing profile. Nik
+2025-07-05 17:38:07.750 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:38:07.751 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:38:07.752 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:38:07.753 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:38:07.755 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:38:07.780 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:38:07.781 [info] Sync done. Took 570ms
+2025-07-05 17:40:01.172 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:40:01.175 [info] Sync started.
+2025-07-05 17:40:01.625 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:40:01.627 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:40:01.632 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:40:01.633 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:40:01.636 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:40:01.725 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:40:01.726 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:40:01.727 [info] Syncing profile. Nik
+2025-07-05 17:40:01.728 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:40:01.729 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:40:01.730 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:40:01.731 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:40:01.733 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:40:01.758 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:40:01.759 [info] Sync done. Took 589ms
+2025-07-05 17:42:29.625 [info] Auto Sync: Triggered by Activity
+2025-07-05 17:42:29.627 [info] Sync started.
+2025-07-05 17:42:30.293 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:42:30.297 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:42:30.304 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:42:30.306 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:42:30.310 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:42:30.397 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:42:30.398 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:42:30.399 [info] Syncing profile. Nik
+2025-07-05 17:42:30.400 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:42:30.403 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:42:30.404 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:42:30.405 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:42:30.407 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:42:30.434 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:42:30.435 [info] Sync done. Took 812ms
+2025-07-05 17:47:30.447 [info] Auto Sync: Triggered by Interval
+2025-07-05 17:47:30.449 [info] Sync started.
+2025-07-05 17:47:31.198 [info] Settings: No changes found during synchronizing settings.
+2025-07-05 17:47:31.201 [info] Keybindings: No changes found during synchronizing keybindings.
+2025-07-05 17:47:31.206 [info] Snippets: No changes found during synchronizing snippets.
+2025-07-05 17:47:31.207 [info] Tasks: No changes found during synchronizing tasks.
+2025-07-05 17:47:31.211 [info] GlobalState: No changes found during synchronizing ui state.
+2025-07-05 17:47:31.288 [info] Extensions: No changes found during synchronizing extensions.
+2025-07-05 17:47:31.290 [info] Profiles: No changes found during synchronizing profiles.
+2025-07-05 17:47:31.291 [info] Syncing profile. Nik
+2025-07-05 17:47:31.292 [info] Settings (Nik): No changes found during synchronizing settings.
+2025-07-05 17:47:31.293 [info] Keybindings (Nik): No changes found during synchronizing keybindings.
+2025-07-05 17:47:31.294 [info] Snippets (Nik): No changes found during synchronizing snippets.
+2025-07-05 17:47:31.295 [info] Tasks (Nik): No changes found during synchronizing tasks.
+2025-07-05 17:47:31.298 [info] GlobalState (Nik): No changes found during synchronizing ui state.
+2025-07-05 17:47:31.327 [info] Extensions (Nik): No changes found during synchronizing extensions.
+2025-07-05 17:47:31.327 [info] Sync done. Took 886ms

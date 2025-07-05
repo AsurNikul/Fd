@@ -8,6 +8,8 @@ const Routes = {
   FilteredBatches: 'FilteredBatches',
   DrawerStack: 'DrawerStack',
   Users: 'Users',
+  AddSales: 'AddSales',
+  Sales: 'Sales',
 };
 
 export default Routes;

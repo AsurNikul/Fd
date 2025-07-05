@@ -33,6 +33,8 @@ const MainStack = () => {
           name={SCREENS.FilteredBatches}
           component={Screens.FilteredBatches}
         />
+        <Stack.Screen name={SCREENS.Sales} component={Screens.Sales} />
+        <Stack.Screen name={SCREENS.AddSales} component={Screens.AddSales} />
       </Stack.Navigator>
     </>
   );

@@ -30,6 +30,8 @@ const CustomDrawer = () => {
   const handleAddBatch = () => navigate(Routes.AddCard);
   const handleAddUsers = () => navigate(Routes.REGISTER);
   const handleViewUsers = () => navigate(Routes.Users);
+  const handleAddSales = () => navigate(Routes.AddSales);
+  const handleSales = () => navigate(Routes.Sales);
   const isAdmin =
     user?.user?.role === 'administrator' || user?.user?.role === 'manager';
   return (
@@ -74,6 +76,20 @@ const CustomDrawer = () => {
           <VectorIcon icon="AntDesign" name="plus" color={colors.primary} />
           <Typography title={'Add Batch'} color={colors.primary} ml={10} />
         </TouchableOpacity>
+        {isAdmin && (
+          <View>
+            <TouchableOpacity style={styles.drawerItem} onPress={handleSales}>
+              <VectorIcon icon="AntDesign" name="tags" color={colors.primary} />
+              <Typography title={'Sales'} color={colors.primary} ml={10} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.drawerItem}
+              onPress={handleAddSales}>
+              <VectorIcon icon="AntDesign" name="plus" color={colors.primary} />
+              <Typography title={'Add Sales'} color={colors.primary} ml={10} />
+            </TouchableOpacity>
+          </View>
+        )}
         <TouchableOpacity style={styles.drawerItem} onPress={handleLogout}>
           <VectorIcon
             icon="MaterialIcons"

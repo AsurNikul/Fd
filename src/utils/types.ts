@@ -44,10 +44,17 @@ export interface registerProps {
 }
 
 export interface addBatchProps {
-  // date: any;
+  date: any;
   // batchNo: string;
   rmKg: string;
   inTime: any;
   outTime: any;
+  // sale: string;
+}
+
+export interface addSalesProps {
+  date: any;
+  // batchNo: string;
+  rmKg: string;
   // sale: string;
 }

@@ -22,4 +22,9 @@ export {
   apiCall,
 } from './Func';
 export {loginValues, registerValues} from './formikValues';
-export {loginSchema, registerSchema, addBatchSchema} from './schema';
+export {
+  loginSchema,
+  registerSchema,
+  addBatchSchema,
+  addSalesSchema,
+} from './schema';
