@@ -28,13 +28,14 @@ import {Routes} from '../../../constants';
 
 const AddSales = () => {
   const batch = useRoute<any>().params?.item;
+  console.log('🚀 ~ AddSales ~ batch:', batch);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [field, setField] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
     if (batch) {
       formik.setValues({
-        date: batch?.date || '',
+        date: batch?.sales_date || '',
         // batchNo: batch?.batchNo || '',
         rmKg: batch?.raw_material || '',
         // sale: batch?.sale || '',

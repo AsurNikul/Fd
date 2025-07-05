@@ -26,7 +26,7 @@ const MiniProducts = (props: MiniProductsProps) => {
 
   const difference = `${hours}:${minutes} Hour`;
 
-  const onEditPress = () => navigate(Routes.AddCard, {item});
+  const onEditPress = () => navigate(Routes.AddSales, {item});
   const isAdmin =
     user?.user?.role === 'administrator' || user?.user?.role === 'manager';
 
