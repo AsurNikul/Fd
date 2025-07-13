@@ -19,7 +19,6 @@ import {Loader, Typography, VectorIcon} from '../../../components/All';
 import {colors, commonStyles} from '../../../theme';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {ALL_BATCHES, DELETE_BATCH} from '../../../Services/API';
-import moment from 'moment';
 
 const Home = () => {
   const navigation = useNavigation<any>();
@@ -43,7 +42,6 @@ const Home = () => {
   }, []);
 
   const getAllBatches = async (tempPage?: number) => {
-    console.log('🚀 ~ getAllBatches ~ tempPage:', tempPage);
     const finalPage = tempPage ? tempPage : page;
     if (finalPage > 1) {
       setBottomLoading(true);

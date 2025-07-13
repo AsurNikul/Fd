@@ -28,7 +28,6 @@ import {Routes} from '../../../constants';
 
 const AddSales = () => {
   const batch = useRoute<any>().params?.item;
-  console.log('🚀 ~ AddSales ~ batch:', batch);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [field, setField] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -54,7 +53,7 @@ const AddSales = () => {
   });
   const handleAddBatchData = async (values: addSalesProps) => {
     const data = {
-      sales_date: moment(values.date, 'DD/MM/YYYY').format(
+      sales_date: moment(values.date, ['DD/MM/YYYY', 'YYYY-MM-DD']).format(
         'YYYY-MM-DD HH:mm:ss',
       ),
       // batchNo: values.batchNo,
@@ -66,7 +65,7 @@ const AddSales = () => {
       .then(res => {
         showPopupWithOk(
           'Success',
-          res?.message || 'Sales added successfully',
+          res?.message || 'Pulp Sheet added successfully',
           () => {
             formik.resetForm();
             replace(Routes.Sales);
@@ -86,8 +85,8 @@ const AddSales = () => {
     setDatePickerVisibility(true);
   };
   const hideDatePicker = () => setDatePickerVisibility(false);
-  const headerTitle = batch?.id ? 'Update Sales' : 'Add Sales';
-  const buttonTitle = batch?.id ? 'Update Sales' : 'Add Sales';
+  const headerTitle = batch?.id ? 'Update Pulp sheet' : 'Add Batch';
+  const buttonTitle = batch?.id ? 'Update Pulp sheet' : 'Add Batch';
   return (
     <Container title={headerTitle} showLeftIcon isAvoidKeyboard>
       <TouchableOpacity
@@ -123,7 +122,7 @@ const AddSales = () => {
       <TextField
         formik={formik}
         name={'rmKg'}
-        placeholder="Enter Raw Material (KG)"
+        placeholder="Enter Pulp sheet"
         iconName="weight-kilogram"
         iconType="MaterialCommunityIcons"
         keyboardType="numeric"

@@ -33,7 +33,7 @@ const AddCard = () => {
   useEffect(() => {
     if (batch) {
       formik.setValues({
-        date: batch?.date || '',
+        date: batch?.in_time || '',
         // batchNo: batch?.batchNo || '',
         rmKg: batch?.raw_material || '',
         inTime: batch?.in_time || '',

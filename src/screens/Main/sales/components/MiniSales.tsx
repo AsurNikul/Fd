@@ -35,7 +35,7 @@ const MiniProducts = (props: MiniProductsProps) => {
       <View style={commonStyles.mt15}>
         <View style={styles.rawContainer}>
           <Typography
-            title={'Raw Material'}
+            title={'Pulp Sheet'}
             size={15}
             color={colors.charcoalGrey}
           />
