@@ -139,9 +139,7 @@ const FilteredBatches = () => {
   const onDeletePress = (id?: any) => {
     showPopupWithOkAndCancel(
       'Globex Spintex',
-      `Are you sure you want to delete this ${
-        isSales ? 'Pulp Sheet' : 'Batch'
-      }?`,
+      `Are you sure you want to delete this ${isSales ? 'Sales' : 'Batch'}?`,
       () => handleDeleteBatch(id),
     );
   };
@@ -152,7 +150,7 @@ const FilteredBatches = () => {
       .then(async res => {
         showPopupWithOk(
           'Success',
-          `${isSales ? 'Pulp Sheet' : 'Batch'} deleted successfully`,
+          `${isSales ? 'Sales' : 'Batch'} deleted successfully`,
           () => {},
         );
         setPage(1);
@@ -185,7 +183,7 @@ const FilteredBatches = () => {
   };
   return (
     <Container
-      title={isSales ? 'Filtered Pulp Sheet' : 'Filtered Batches'}
+      title={isSales ? 'Filtered Sales' : 'Filtered Batches'}
       showLeftIcon
       rightIcon={Images.filter}
       onRightPress={handleOpenFilterModal}>
@@ -236,6 +234,7 @@ const FilteredBatches = () => {
         visible={showFilterModal}
         onApplyPress={handleApplyFilter}
         onRequestClose={handleCloseFilterModal}
+        isSales={isSales}
       />
     </Container>
   );

@@ -8,10 +8,11 @@ import moment from 'moment';
 
 interface FilterModalProps extends ModalProps {
   onApplyPress: (data: any) => void;
+  isSales?: boolean;
 }
 
 const FilterModal: FC<FilterModalProps> = props => {
-  const {onApplyPress} = props;
+  const {onApplyPress, isSales} = props;
   const [type, setType] = useState<string>('');
   const [startDate, setStartDate] = useState(null);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -47,7 +48,7 @@ const FilterModal: FC<FilterModalProps> = props => {
       <View style={commonStyles.modalContainer}>
         <View style={styles.modalSubContainer}>
           <View style={styles.headerContainer}>
-            <Typography title={'Filter Batches'} />
+            <Typography title={isSales ? 'Filter Sales' : 'Filter Batches'} />
             <VectorIcon
               icon="AntDesign"
               name="close"

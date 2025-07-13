@@ -85,8 +85,8 @@ const AddSales = () => {
     setDatePickerVisibility(true);
   };
   const hideDatePicker = () => setDatePickerVisibility(false);
-  const headerTitle = batch?.id ? 'Update Pulp sheet' : 'Add Batch';
-  const buttonTitle = batch?.id ? 'Update Pulp sheet' : 'Add Batch';
+  const headerTitle = batch?.id ? 'Update Sales' : 'Add Sales';
+  const buttonTitle = batch?.id ? 'Update Sales' : 'Add Sales';
   return (
     <Container title={headerTitle} showLeftIcon isAvoidKeyboard>
       <TouchableOpacity
@@ -139,7 +139,7 @@ const AddSales = () => {
         title={buttonTitle}
         onPress={() => formik.handleSubmit()}
         // onPress={() => dispatch(removeBatches([]))}
-        width={moderateScale(190)}
+        width={moderateScale(200)}
         borderRadius={50}
         loading={loading}
         buttonContainerStyle={commonStyles.mt40}

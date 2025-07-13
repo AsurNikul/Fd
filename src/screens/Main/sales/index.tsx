@@ -42,7 +42,6 @@ const Sales = () => {
   }, []);
 
   const getAllBatches = async (tempPage?: number) => {
-    console.log('🚀 ~ getAllBatches ~ tempPage:', tempPage);
     const finalPage = tempPage ? tempPage : page;
     if (finalPage > 1) {
       setBottomLoading(true);
@@ -99,7 +98,7 @@ const Sales = () => {
   const onDeletePress = (id?: any) => {
     showPopupWithOkAndCancel(
       'Globex Spintex',
-      'Are you sure you want to delete this Pulp Sheet?',
+      'Are you sure you want to delete this Sales record?',
       () => handleDeleteBatch(id),
     );
   };
@@ -107,7 +106,11 @@ const Sales = () => {
     setLoading(true);
     apiCall(`${SALES}/${id}`, 'DELETE')
       .then(async res => {
-        showPopupWithOk('Success', 'Pulp Sheet deleted successfully', () => {});
+        showPopupWithOk(
+          'Success',
+          'Sales record deleted successfully',
+          () => {},
+        );
         setPage(1);
         timer = setTimeout(async () => {
           await getAllBatches(1);
@@ -118,7 +121,7 @@ const Sales = () => {
 
   return (
     <Container
-      title={'Pulp Sheet'}
+      title={'Sales'}
       rightIcon={Images.filter}
       showLeftIcon
       onRightPress={handleOpenFilterModal}>
@@ -166,6 +169,7 @@ const Sales = () => {
         visible={filterModal}
         onRequestClose={handleCloseFilterModal}
         onApplyPress={handleApplyFilter}
+        isSales
       />
     </Container>
   );
