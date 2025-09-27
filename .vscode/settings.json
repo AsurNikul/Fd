@@ -275,7 +275,7 @@
   "editor.cursorSurroundingLines": 0,
   "editor.cursorSurroundingLinesStyle": "default",
   "editor.cursorWidth": 0,
-  "editor.defaultColorDecorators": false,
+  "editor.defaultColorDecorators": "never",
   "editor.defaultFoldingRangeProvider": null,
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.files.associations": {},
